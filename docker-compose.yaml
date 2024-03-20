@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  champ-api:
+    container_name: champ-api
+    build:
+      context: .
+      dockerfile: containers/python/Dockerfile
+    ports:
+      - '8000:8000'
+    env_file:
+      - ./champ-api/.env
+    restart: on-failure
+    volumes:
+      - ./champ-api:/app
+
+  champ-db:
+    container_name: champ-db
+    build:
+      context: .
+      dockerfile: containers/postgres/Dockerfile
+    ports:
+      - '5432:5432'
+    env_file:
+      - ./champ-api/.env
+
+  redis:
+    container_name: redis
+    build:
+      context: .
+      dockerfile: containers/redis/Dockerfile
+    ports:
+      - '6379:6379'
+    env_file:
+      - ./champ-api/.env
