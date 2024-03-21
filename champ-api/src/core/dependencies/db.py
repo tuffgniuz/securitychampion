@@ -4,7 +4,7 @@ from fastapi_users.db import SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from src.core.config.settings import get_db_settings as db
-from src.models.user import User
+from src.models.user import OAuthAccount, User
 
 DB_URL = f'postgresql+asyncpg://{db.POSTGRES_USER}:{db.POSTGRES_PASSWORD}@{db.POSTGRES_HOST}:{db.POSTGRES_PORT}/{db.POSTGRES_DB}'
 
@@ -18,4 +18,4 @@ async def get_async_session() -> AsyncGenerator[AsyncSession, None]:
 
 
 async def get_user_db(session: AsyncSession = Depends(get_async_session)):
-    yield SQLAlchemyUserDatabase(session, User)
+    yield SQLAlchemyUserDatabase(session, User, OAuthAccount)

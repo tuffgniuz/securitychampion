@@ -9,8 +9,9 @@ uvicorn = "*"
 sqlalchemy = "*"
 alembic = "*"
 python-decouple = "*"
-fastapi-users = {extras = ["sqlalchemy", "redis"], version = "*"}
 asyncpg = "*"
+fastapi-users = {extras = ["oauth", "redis", "sqlalchemy"], version = "*"}
+httpx-oauth = "*"
 
 [dev-packages]
 

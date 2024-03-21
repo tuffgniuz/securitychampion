@@ -4,22 +4,22 @@ from pydantic import BaseModel
 from src.schemas.requirement_schemas import RequirementResponseSchema
 
 
-class FeatureCreateSchema(BaseModel):
+class IssueCreateSchema(BaseModel):
     name: str
     description: Optional[str] = None
 
 
-class FeatureUpdateSchema(BaseModel):
+class IssueUpdateSchema(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
 
 
-class FeatureResponseSchema(BaseModel):
+class IssueResponseSchema(BaseModel):
     name: str 
     description: str
 
 
-class FeatureWithRequirementsResponseSchema(BaseModel):
+class IssueWithRequirementsResponseSchema(BaseModel):
     name: str
     description: str
     requirements: list[RequirementResponseSchema] = []

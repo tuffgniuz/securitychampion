@@ -3,12 +3,12 @@ from sqlalchemy import UUID, Boolean, ForeignKey, String, text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.models.base import Base
-from src.models.association_tables import feature_requirement_association
+from src.models.association_tables.issue_requirement_association import issue_requirement_association
 
 if TYPE_CHECKING:
     from src.models.category import Category
     from src.models.sub_category import SubCategory
-    from src.models.feature import Feature
+    from src.models.issue import Issue
 
 
 class Requirement(Base):
@@ -27,5 +27,5 @@ class Requirement(Base):
     sub_category_id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), ForeignKey('sub_categories.id'))
     sub_category: Mapped['SubCategory'] = relationship('SubCategory', back_populates='requirements')
 
-    features: Mapped[list['Feature']] = relationship(
-        'Feature', secondary=feature_requirement_association, back_populates='requirements')
+    issues: Mapped[list['Issue']] = relationship(
+        'Issue', secondary=issue_requirement_association, back_populates='requirements')
