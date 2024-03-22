@@ -5,4 +5,6 @@
 
 <Navbar />
 
-<slot />
+<div class="mx-auto md:w-9/12">
+  <slot />
+</div>

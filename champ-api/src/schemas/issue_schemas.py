@@ -1,11 +1,12 @@
 from typing import Optional
+from uuid import UUID
 from pydantic import BaseModel
 
 from src.schemas.requirement_schemas import RequirementResponseSchema
 
 
 class IssueCreateSchema(BaseModel):
-    name: str
+    name: UUID
     description: Optional[str] = None
 
 

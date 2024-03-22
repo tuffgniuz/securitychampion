@@ -1,25 +1,33 @@
 <script lang="ts">
-	import { Github } from "lucide-svelte";
+	import { LucideGithub } from "lucide-svelte";
 </script>
 
-<nav class="p-5">
-  <div class="flex items-center justify-between">
-    <h1>Security Champion</h1>
-    <div class="flex items-center gap-6">
-      <ul class="flex gap-3">
-        <li><a href="">Pricing</a></li>
-        <li><a href="">Requirements</a></li>
-        <li><a href="">Issues</a></li>
-      </ul>
+<nav class="border-b border-midnightshadow mb-10">
+  <div class="mx-auto py-4 w-9/12">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <img src="/icons/dummy-logo.svg" alt="logo" class="w-8">
+        Security Champion
+      </div>
+      <div class="flex items-center gap-6">
+        <ul class="flex gap-3">
+          <li><a href="/requirements">Requirements</a></li>
+          <li><a href="/issues">Issues</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
 
-      <ul class="flex items-center gap-3">
-        <li><a href="">Login</a></li>
-        <li>
-          <a href="">
-            <Github size="18" />
-          </a>
-        </li>
-      </ul>
+        <span class="text-muted">|</span>
+
+        <ul class="flex items-center gap-3">
+          <li><a href="">Login</a></li>
+          <li>
+            <a href="https://github.com/tuffgniuz/securitychampion">
+                <LucideGithub size="18" />
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

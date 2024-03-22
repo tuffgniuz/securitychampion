@@ -1,3 +1,4 @@
+from typing import Sequence
 from fastapi import Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -19,3 +20,6 @@ class RequirementService:
             raise HTTPException(status_code=404, detail='Requirement not found')
 
         return requirement
+    
+    async def get_all(self) -> Sequence[Requirement]:
+        return await self.repository.get_all()
