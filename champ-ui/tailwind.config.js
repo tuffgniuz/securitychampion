@@ -3,6 +3,29 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.morning'),
+            h1: {
+              color: theme('colors.afternoon'),
+            },
+            h2: {
+              color: theme('colors.afternoon'),
+            },
+            h3: {
+              color: theme('colors.afternoon'),
+            },
+            a: {
+              color: theme('colors.sapphire')
+            },
+            strong: {
+              color: theme('colors.morning'),
+            },
+            lineHeight: '1.75',
+          }
+        }
+      }),
       colors: {
         midnightshadow: '#363a4f',
         base: '#24273a',
@@ -19,5 +42,7 @@ export default {
       }
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/typography'),
+  ]
 };

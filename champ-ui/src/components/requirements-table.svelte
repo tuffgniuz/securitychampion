@@ -1,7 +1,30 @@
 <script lang="ts">
+	import { marked } from 'marked';
+
   import type { Category } from '$lib/types/models';
+	import RequirementDetailModal from './requirement-detail-modal.svelte';
+	import { config } from '$lib/config';
 
   export let categories: Category[];
+
+  let showModal = false;
+  let markdownContent = '';
+
+  const handleModalOpen = async (requirementId: string) => {
+    const response = await fetch(`${config.baseApiUrl}/api/v1/asvs/requirements/${requirementId}/markdown`)
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data)
+      markdownContent = marked.parse(data.content);
+      showModal = true;
+    } else {
+      console.log(`${response.statusText}`)
+    }
+  }
+
+  const handleModalClose = () => {
+    showModal = false;
+  }
 </script> 
 
 <div class="mt-6">
@@ -22,7 +45,12 @@
           {#each category.requirements as requirement (requirement.id)}
           <tr class="border-y border-base">
             <td class="p-3 italic align-top text-muted">{requirement.requirement_id}</td>
-            <td class="p-3 align-top">{requirement.description}</td>
+            <td 
+              class="p-3 align-top cursor-pointer" 
+              on:click={() => handleModalOpen(requirement.requirement_id)}
+            >
+              {requirement.description}
+            </td>
             <td class="p-3">
               <div class="flex items-center gap-2">
                 {#if requirement.level1}<span class="rounded-lg bg-base border border-rosewater text-rosewater p-1 whitespace-nowrap text-sm">Level 1</span>{/if}
@@ -37,3 +65,7 @@
     </div>
   {/each}
 </div>
+
+{#if showModal}
+  <RequirementDetailModal bind:isOpen={showModal} {markdownContent} on:close={handleModalClose} />
+{/if}

@@ -19,4 +19,5 @@ export interface Requirement {
   level1: boolean;
   level2: boolean;
   level3: boolean;
+  markdown_path?: string;
 }

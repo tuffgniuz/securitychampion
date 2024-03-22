@@ -4,8 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 def cors_middleware(app: FastAPI):
     origins = [ 
-        'localhost:5174',
-        'http://localhost:5174' 
+        'localhost:5173',
+        'http://localhost:5173' 
     ]
     app.add_middleware(
         CORSMiddleware,
