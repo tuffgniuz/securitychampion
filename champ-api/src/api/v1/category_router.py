@@ -16,6 +16,11 @@ async def get_all_with_requirements(service: CategoryService = Depends(CategoryS
     return await service.get_all_with_requirements()
 
 
+@router.get('/categories/sub-categories/requirements')
+async def get_joined_sub_categories_and_requirements(service: CategoryService = Depends(CategoryService)):
+    return await service.get_joined_sub_categories_and_requirement()
+
+
 @router.get('/categories', response_model=list[CategoryResponseSchema])
 async def get_all(service: CategoryService = Depends(CategoryService)):
     return await service.get_all()
@@ -24,3 +29,4 @@ async def get_all(service: CategoryService = Depends(CategoryService)):
 @router.get('/categories/{id}', response_model=CategoryResponseSchema)
 async def get_by_id_or_404(id: str, service: CategoryService = Depends(CategoryService)):
     return await service.get_by_id_or_none(id)
+

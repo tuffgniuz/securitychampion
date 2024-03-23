@@ -72,3 +72,6 @@ class CategoryService:
             Sequence[Category]: A list of all Category instances with their requirements loaded eagerly.
         """
         return await self.repository.get_all_with_requirements()
+
+    async def get_joined_sub_categories_and_requirement(self) -> Sequence[Category]:
+        return await self.repository.get_joined_sub_categories_and_requirements()

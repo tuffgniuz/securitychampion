@@ -11,7 +11,7 @@
       </div>
       <div class="flex items-center gap-6">
         <ul class="flex gap-3">
-          <li><a href="/requirements">Requirements</a></li>
+          <li><a href="/requirements">Library</a></li>
           <li><a href="/issues">Issues</a></li>
           <li><a href="/pricing">Pricing</a></li>
           <li><a href="/about">About</a></li>

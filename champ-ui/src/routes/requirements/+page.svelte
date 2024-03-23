@@ -5,11 +5,17 @@
 	import RequirementsTable from "../../components/requirements-table.svelte";
 
   export let data;
+
+  let activeFilter = { type: null, id: null };
+
+  const handleFilterChange = (event: CustomEvent) => {
+    activeFilter = event.detail;
+  }
 </script>
 
 <div class="flex gap-10">
   <div class="w-2/12">
-    <Sidebar categories={data.categories} />
+    <Sidebar categories={data.categories} on:filterChange={handleFilterChange}  />
   </div>
   <div class="w-10/12 p-2">
     <!-- view mode -->
@@ -22,6 +28,6 @@
       </span>
     </div>
     <!-- requirements -->
-    <RequirementsTable categories={data.requirements} />
+    <RequirementsTable categories={data.categoriesJoinedRequirements} {activeFilter} />
   </div>
 </div>

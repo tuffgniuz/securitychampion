@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
 
 from src.models.category import Category
+from src.models.sub_category import SubCategory
 
 
 class CategoryRepository:
@@ -65,5 +66,16 @@ class CategoryRepository:
             Sequence[Category]: A list of all Category instances including their requirements loaded eagerly.
         """
         stmt = select(Category).options(joinedload(Category.requirements))
+        result = await self.session.execute(stmt)
+        return result.scalars().unique().all()
+
+    async def get_joined_sub_categories_and_requirements(self) -> Sequence[Category]:
+        """
+        Retrieves all categories along with their related requirements and sub-categories.
+        
+        Returns:
+            Sequence[Category]: A list of all Category instances including their requirements and sub-categories loaded eagerly.
+        """
+        stmt = select(Category).options(joinedload(Category.sub_categories).joinedload(SubCategory.requirements))
         result = await self.session.execute(stmt)
         return result.scalars().unique().all()

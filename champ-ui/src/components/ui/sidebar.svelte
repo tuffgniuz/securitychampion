@@ -3,13 +3,20 @@
   import { LucideBookOpenText, LucideGithub } from 'lucide-svelte';
 
   import type { Category } from '$lib/types/models';
+	import { createEventDispatcher } from 'svelte';
 
   export let categories: Category[];
 
   let activeCategoryId: string | null = null;
+  const dispatch = createEventDispatcher();
 
   const toggleCategory = (categoryId: string) => {
     activeCategoryId = activeCategoryId === categoryId ? null : categoryId;
+    dispatch('filterChange', { type: 'category', id: activeCategoryId });
+  }
+
+  const selectSubCategory = (subCategoryId: string) => {
+    dispatch('filterChange', { type: 'sub_category', id: subCategoryId });
   }
 </script>
 
@@ -58,7 +65,8 @@
     <h5 
       class="
         cursor-pointer 
-        hover:bg-midnightshadow 
+        hover:bg-maroon 
+        hover:text-base
         p-1
         mb-2
         rounded-md 
@@ -67,6 +75,7 @@
         ease-in-out
         flex items-center 
         gap-2
+        {activeCategoryId === category.id ? 'bg-maroon text-base' : ''}
       "
       on:click={() => toggleCategory(category.id)}
     >
@@ -75,7 +84,7 @@
     {#if activeCategoryId === category.id}
       <ul transition:slide="{{ duration: 500 }}" class="border-l border-midnightshadow pl-8 mb-5">
       {#each category.sub_categories as sub_category (sub_category.id)}
-        <li class="my-4 cursor-pointer">{sub_category.name}</li>
+        <li class="my-4 cursor-pointer" on:click={() => selectSubCategory(sub_category.id)}>{sub_category.name}</li>
       {/each}
       </ul>
     {/if}
