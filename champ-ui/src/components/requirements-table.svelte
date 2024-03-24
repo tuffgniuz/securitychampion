@@ -11,17 +11,37 @@
 
   let showModal = false;
   let markdownContent = '';
+  export let searchText = '';
 
-   $: filteredCategories = categories.filter(category => {
-    console.log('Filtering with:', activeFilter)
-    if (!activeFilter.id) return true;
-    if (activeFilter.type === 'category') return category.id === activeFilter.id;
-    if (activeFilter.type === 'sub_category') {
-      return category.sub_categories?.some((sub) => sub.id === activeFilter.id);
+  $: filteredCategories = categories.filter(category => {
+    // If there's an active category/sub-category filter, keep the existing logic
+    if (activeFilter.id) {
+      if (activeFilter.type === 'category') return category.id === activeFilter.id;
+      if (activeFilter.type === 'sub_category') {
+        return category.sub_categories?.some(sub => sub.id === activeFilter.id);
+      }
     }
-    return false;
-  }); 
-
+    // Filter requirements within each category and sub-category by searchText
+    const filteredSubCategories = category.sub_categories?.map(subCategory => {
+      const filteredRequirements = subCategory.requirements?.filter(requirement => 
+        requirement.description.toLowerCase().includes(searchText.toLowerCase()) || 
+        requirement.requirement_id.toLowerCase().match(searchText.toLowerCase())
+      );
+      return { ...subCategory, requirements: filteredRequirements };
+    });
+    // Only include categories and sub-categories that have at least one matching requirement
+    return filteredSubCategories?.some(subCategory => subCategory.requirements?.length > 0);
+    }).map(category => ({
+      ...category,
+      sub_categories: category.sub_categories?.map(subCategory => ({
+        ...subCategory,
+        requirements: subCategory.requirements?.filter(requirement => 
+          requirement.description.toLowerCase().includes(searchText.toLowerCase()) || 
+          requirement.requirement_id.toLowerCase().match(searchText.toLowerCase())
+        )
+    })).filter(subCategory => subCategory.requirements?.length > 0)
+  }));
+   
   const handleModalOpen = async (requirementId: string) => {
     const response = await fetch(`${config.baseApiUrl}/api/v1/asvs/requirements/${requirementId}/markdown`)
     if (response.ok) {

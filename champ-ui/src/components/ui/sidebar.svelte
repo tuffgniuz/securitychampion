@@ -20,13 +20,11 @@
   }
 </script>
 
-<div class="mb-6">
-  <form action="">
-    <input type="text" placeholder="Quick search..." class="bg-midnightshadow py-1 px-2 rounded-md outline-none border-none w-full">
-  </form>
-</div>
+<!-- <div class="mb-6"> -->
+<!--   <input type="text" placeholder="Search..." class="bg-midnightshadow py-1 px-2 rounded-md outline-none border-none w-full"> -->
+<!-- </div> -->
 
-<nav class="text-md">
+<nav class="text-md max-h-screen overflow-y-auto pr-2">
   <ul class="mb-8">
     <li class="py-2">
       <a href="https://github.com/tuffgniuz/securitychampion" class="flex items-center gap-5">
@@ -46,21 +44,6 @@
     </li>
   </ul>
 
-  <h5 class="
-        cursor-pointer 
-        hover:bg-midnightshadow 
-        p-1
-        mb-2
-        rounded-md 
-        transition-all 
-        duration-5000
-        ease-in-out
-        flex items-center 
-        gap-2
-    "
-  >
-    All
-  </h5>
   {#each categories as category (category.id)}
     <h5 
       class="
