@@ -1,6 +1,6 @@
-# Security Champ
+# Solomon
 
-Security Champion is an open-source web application designed to make navigating and implementing the OWASP Application Security Verification Standard (ASVS) requirements more accessible for developers and security engineers. By providing a user-friendly interface to filter, search, and manage ASVS requirements, Security Champion aims to integrate security best practices into the software development lifecycle with ease.
+Solomon is an open-source web application designed to make navigating and implementing the OWASP Application Security Verification Standard (ASVS) requirements more accessible for developers and security engineers. By providing a user-friendly interface to filter, search, and manage ASVS requirements, Solomonaims to integrate security best practices into the software development lifecycle with ease.
 
 ## Features
 
