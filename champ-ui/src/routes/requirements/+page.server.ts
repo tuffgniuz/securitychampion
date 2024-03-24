@@ -8,5 +8,7 @@ export const load: Load = async ({ fetch }) => {
   const categoriesJoinedRequirementsResponse = await fetch(`${config.baseApiUrl}/api/v1/asvs/categories/sub-categories/requirements`)
   const categoriesJoinedRequirements = await categoriesJoinedRequirementsResponse.json()
 
+  console.log(categoriesJoinedRequirements)
+
   return { categories, categoriesJoinedRequirements }
 }

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { slide } from 'svelte/transition';
   import { LucideBookOpenText, LucideGithub } from 'lucide-svelte';
 
   import type { Category } from '$lib/types/models';
@@ -14,15 +13,7 @@
     activeCategoryId = activeCategoryId === categoryId ? null : categoryId;
     dispatch('filterChange', { type: 'category', id: activeCategoryId });
   }
-
-  const selectSubCategory = (subCategoryId: string) => {
-    dispatch('filterChange', { type: 'sub_category', id: subCategoryId });
-  }
 </script>
-
-<!-- <div class="mb-6"> -->
-<!--   <input type="text" placeholder="Search..." class="bg-midnightshadow py-1 px-2 rounded-md outline-none border-none w-full"> -->
-<!-- </div> -->
 
 <nav class="text-md max-h-screen overflow-y-auto pr-2">
   <ul class="mb-8">
@@ -48,8 +39,7 @@
     <h5 
       class="
         cursor-pointer 
-        hover:bg-maroon 
-        hover:text-base
+        hover:bg-mantle 
         p-1
         mb-2
         rounded-md 
@@ -58,18 +48,11 @@
         ease-in-out
         flex items-center 
         gap-2
-        {activeCategoryId === category.id ? 'bg-maroon text-base' : ''}
+        {activeCategoryId === category.id ? 'bg-mantle' : ''}
       "
       on:click={() => toggleCategory(category.id)}
     >
       {category.name}
     </h5>
-    {#if activeCategoryId === category.id}
-      <ul transition:slide="{{ duration: 500 }}" class="border-l border-midnightshadow pl-8 mb-5">
-      {#each category.sub_categories as sub_category (sub_category.id)}
-        <li class="my-4 cursor-pointer" on:click={() => selectSubCategory(sub_category.id)}>{sub_category.name}</li>
-      {/each}
-      </ul>
-    {/if}
   {/each}
 </nav>

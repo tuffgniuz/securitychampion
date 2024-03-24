@@ -16,6 +16,12 @@ export default {
             h3: {
               color: theme('colors.afternoon'),
             },
+            h4: {
+              color: theme('colors.afternoon'),
+            },
+            h5: {
+              color: theme('colors.afternoon'),
+            },
             a: {
               color: theme('colors.sapphire')
             },
@@ -29,9 +35,12 @@ export default {
       colors: {
         midnightshadow: '#363a4f',
         base: '#24273a',
-        eclipse: '#24273a',
+        crust: '#181926',
+        mantle: '#1e2030',
         morning: '#cad3f5',
         muted: '#a2a9c2',
+        green: '#a6da95',
+        teal: '#8bd5ca',
         afternoon: '#ebeefb',
         rosewater: '#f4dbd6',
         flamingo: '#f0c6c6',

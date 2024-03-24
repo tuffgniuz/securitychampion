@@ -6,16 +6,25 @@
 
   export let data;
 
-  let activeFilter = { type: null, id: null };
+  let activeFilter = { category: null, subCategory: null };
   let searchText = '';
 
   const handleSearchTextChange = (event) => {
     searchText = event.target.value;
   }
 
+  /* const handleFilterChange = (event: CustomEvent) => { */
+  /*   activeFilter = event.detail; */
+  /* } */
   const handleFilterChange = (event: CustomEvent) => {
-    activeFilter = event.detail;
-  }
+    const { type, id } = event.detail;
+    if (type === 'category') {
+      activeFilter.category = id;
+      activeFilter.subCategory = null; // Reset sub-category filter when a new category is selected
+    } else if (type === 'subCategory') {
+      activeFilter.subCategory = id;
+    }
+  };
 </script>
 
 <div class="flex gap-10">
@@ -47,6 +56,6 @@
       </div>
     </div>
     <!-- requirements -->
-    <RequirementsTable categories={data.categoriesJoinedRequirements} {activeFilter} {searchText} />
+    <RequirementsTable categories={data.categoriesJoinedRequirements} bind:activeFilter {searchText} />
   </div>
 </div>
