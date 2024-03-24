@@ -12,6 +12,12 @@ Security Champion is an open-source web application designed to make navigating 
 - **Share Your Findings**: Whether you're collaborating with your team or documenting your progress, the export options have you covered. Choose from Markdown, PDF, or other formats to share your work how you see fit.
 - **Designed with You in Mind**: Security can be complex. That's why Security Champion is designed to be as friendly and approachable as possible. No more wading through jargon – just clear, straightforward security guidance.
 
+## Acknowledgements
+
+## Acknowledgements
+
+This project was inspired by the [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool).
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](https://www.gnu.org/licenses/gpl-3.0.en.html) file for details.
