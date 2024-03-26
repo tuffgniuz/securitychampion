@@ -26,7 +26,20 @@ export default {
               color: theme('colors.sapphire')
             },
             strong: {
+              color: theme('colors.afternoon'),
+            },
+            hr: {
+              borderColor: theme('colors.midnightshadow'), // This line sets the color of <hr>
+              borderTopWidth: '1px', // You can set the thickness of the <hr> line here
+            },
+            blockquote: {
+              /* backgroundColor: theme('colors.mantle'), */
+              padding: '.5em',
               color: theme('colors.morning'),
+              borderLeft: '1px solid',
+              borderColor: theme('colors.midnightshadow'),
+              /* borderWidth: '0', */
+              /* borderRadius: '.5em' */
             },
             lineHeight: '1.75',
           }
@@ -44,7 +57,7 @@ export default {
         afternoon: '#ebeefb',
         rosewater: '#f4dbd6',
         flamingo: '#f0c6c6',
-        mauve: '#c6a0f6',
+        mauve: '#d4b7f8',
         maroon: '#ee99a0',
         yellow: '#eed49f',
         sapphire: '#7dc4e4',
