@@ -17,7 +17,4 @@ class Issue(Base):
     name: Mapped[str] = mapped_column(String, nullable=False)
     description: Mapped[str] = mapped_column(String, nullable=True)
 
-    user_id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), ForeignKey('user.id'))
-    user: Mapped['User'] = relationship('User', back_populates='issues')
-
     requirements: Mapped[list['Requirement']] = relationship('Requirement', secondary=issue_requirement_association, back_populates='issues')
