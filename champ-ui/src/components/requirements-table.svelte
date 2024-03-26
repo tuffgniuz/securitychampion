@@ -26,15 +26,13 @@
     );
 
     return isCategoryMatch && subCategoriesFiltered?.length > 0;
-  }).map(category => ({
-      ...category,
-      sub_categories: category.sub_categories.map(subCategory => {
-          const filteredRequirements = subCategory.requirements.filter(requirement => 
-              requirement.description.toLowerCase().includes(searchText.toLowerCase()) || 
-              requirement.requirement_id.toLowerCase().match(searchText.toLowerCase()));
-          return { ...subCategory, requirements: filteredRequirements };
-      }).filter(subCategory => subCategory.requirements.length > 0)
-  }));
+    }).map(category => ({ ...category, sub_categories: category.sub_categories.map(subCategory => {
+        const filteredRequirements = subCategory.requirements?.filter(requirement => 
+            requirement.description.toLowerCase().includes(searchText.toLowerCase()) || 
+            requirement.requirement_id.toLowerCase().match(searchText.toLowerCase()));
+        return { ...subCategory, requirements: filteredRequirements };
+      }).filter(subCategory => subCategory.requirements?.length > 0)
+    }));
 
   const selectSubCategory = (subCategoryId: string) => {
     if (activeFilter.subCategory === subCategoryId) {
@@ -78,7 +76,7 @@
     <div class="flex flex-wrap gap-4 my-5">
       {#each category.sub_categories as sub_category (sub_category.id)}
         <button 
-          class="px-4 py-1 rounded-md {activeFilter.subCategory === sub_category.id ? 'bg-mauve text-base' : 'bg-mantle'}"
+          class="px-4 py-1 rounded-md hover:bg-mauve hover:text-base transition-all duration-500 ease-in-out {activeFilter.subCategory === sub_category.id ? 'bg-mauve text-base' : 'bg-mantle'}"
           on:click={() => selectSubCategory(sub_category.id)}
         >
           {sub_category.name}

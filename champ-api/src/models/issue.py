@@ -1,5 +1,5 @@
 from typing import TYPE_CHECKING
-from sqlalchemy import UUID, ForeignKey, String, text
+from sqlalchemy import UUID, String, text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.models.base import Base
@@ -7,7 +7,6 @@ from src.models.association_tables.issue_requirement_association import issue_re
 
 if TYPE_CHECKING:
     from src.models.requirement import Requirement
-    from src.models.user import User
 
 
 class Issue(Base):

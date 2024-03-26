@@ -35,13 +35,10 @@
   <div class="w-11/12 p-2 max-h-screen overflow-y-auto pr-4">
       <div class="flex justify-between items-center w-full">
         <!-- view mode -->
-        <div class="flex items-center gap-2">
-          <span class="cursor-pointer">
-            <LucideTable2 size="18" />
-          </span>
-          <span class="cursor-pointer">
-            <LucideGrid size="18" />
-          </span>
+        <div>
+          <select class="bg-midnightshadow py-1 px-4 rounded-md cursor-pointer">
+            <option>Issue</option> 
+          </select>
         </div>
         <input 
           type="text"

@@ -8,5 +8,8 @@ export const load: Load = async ({ fetch }) => {
   const categoriesJoinedRequirementsResponse = await fetch(`${config.baseApiUrl}/api/v1/asvs/categories/sub-categories/requirements`)
   const categoriesJoinedRequirements = await categoriesJoinedRequirementsResponse.json()
 
-  return { categories, categoriesJoinedRequirements }
+  const issuesResponse = await fetch(`${config.baseApiUrl}/api/v1/issues`)
+  const issues = await issuesResponse.json();
+
+  return { categories, categoriesJoinedRequirements, issues }
 }

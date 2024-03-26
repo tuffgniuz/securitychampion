@@ -50,7 +50,7 @@ class IssueRepository:
         :return: A sequence of all issue instances.
         """
         stmt = await self.session.execute(select(Issue).options(joinedload(Issue.requirements)))
-        return stmt.scalars().all()
+        return stmt.scalars().unique().all()
 
     async def update(self, issue: Issue, update_data: dict) -> Issue:
         """

@@ -7,12 +7,12 @@ from src.services.issue_service import IssueService
 router = APIRouter(prefix='/api/v1', tags=['issues'])
 
 
-@router.post('/issues', response_model=IssueResponseSchema)
+@router.post('/issues')
 async def create_issue(create_schema: IssueCreateSchema, service: IssueService = Depends(IssueService)):
     return await service.add(create_schema.model_dump())
 
 
-@router.get('/issues', response_model=IssueWithRequirementsResponseSchema)
+@router.get('/issues')
 async def get_all(service: IssueService = Depends(IssueService)):
     return await service.get_all()
 

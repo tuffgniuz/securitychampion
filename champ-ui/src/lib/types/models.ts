@@ -21,3 +21,10 @@ export interface Requirement {
   level3: boolean;
   markdown_path?: string;
 }
+
+export interface Issue {
+  id: string;
+  name: string;
+  description: string;
+  requirements: Requirement[];
+}
