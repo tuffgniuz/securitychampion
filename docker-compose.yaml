@@ -23,13 +23,3 @@ services:
       - '5432:5432'
     env_file:
       - ./champ-api/.env
-
-  redis:
-    container_name: redis
-    build:
-      context: .
-      dockerfile: containers/redis/Dockerfile
-    ports:
-      - '6379:6379'
-    env_file:
-      - ./champ-api/.env
