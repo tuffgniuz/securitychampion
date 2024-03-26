@@ -10,8 +10,6 @@ sqlalchemy = "*"
 alembic = "*"
 python-decouple = "*"
 asyncpg = "*"
-fastapi-users = {extras = ["oauth", "redis", "sqlalchemy"], version = "*"}
-httpx-oauth = "*"
 
 [dev-packages]
 

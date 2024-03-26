@@ -299,26 +299,6 @@
             "markers": "python_version >= '3.8'",
             "version": "==0.110.0"
         },
-        "fastapi-users": {
-            "extras": [
-                "oauth",
-                "redis",
-                "sqlalchemy"
-            ],
-            "hashes": [
-                "sha256:b397c815b7051c8fd4b560fbeee707acd28e00bd3e8f25c292ad158a1e47e884",
-                "sha256:e6246529e3080a5b50e5afeed1e996663b661f1dc791a1ac478925cb5bfc0fa0"
-            ],
-            "markers": "python_version >= '3.8'",
-            "version": "==13.0.0"
-        },
-        "fastapi-users-db-sqlalchemy": {
-            "hashes": [
-                "sha256:d1050ec31eb75e8c4fa9abafa4addaf0baf5c97afeea2f0f910ea55e2451fcad",
-                "sha256:f0ef9fe3250453712d25c13170700c80fa205867ce7add7ef391c384ec27cbe1"
-            ],
-            "version": "==6.0.1"
-        },
         "greenlet": {
             "hashes": [
                 "sha256:01bc7ea167cf943b4c802068e178bbf70ae2e8c080467070d01bfa02f337ee67",
@@ -406,15 +386,6 @@
             ],
             "markers": "python_version >= '3.8'",
             "version": "==0.26.0"
-        },
-        "httpx-oauth": {
-            "hashes": [
-                "sha256:4dccae219170d76e745cb6ad76b6d927effad59c25b9098b8b527ca1039522fc",
-                "sha256:9034cbb586590e59006d8a7c8c503c61e530f6dba317f998d4ccb43d78ac4351"
-            ],
-            "index": "pypi",
-            "markers": "python_version >= '3.8'",
-            "version": "==0.13.2"
         },
         "idna": {
             "hashes": [
