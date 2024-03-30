@@ -8,20 +8,22 @@ export default {
           css: {
             color: theme('colors.morning'),
             h1: {
-              color: theme('colors.afternoon'),
+              color: theme('colors.mauve'),
             },
             h2: {
-              color: theme('colors.afternoon'),
+              color: theme('colors.yellow'),
+              marginTop: '1em',
+              marginBottom: '.5em',
             },
-            h3: {
-              color: theme('colors.afternoon'),
-            },
-            h4: {
-              color: theme('colors.afternoon'),
-            },
-            h5: {
-              color: theme('colors.afternoon'),
-            },
+            /* h3: { */
+            /*   color: theme('colors.afternoon'), */
+            /* }, */
+            /* h4: { */
+            /*   color: theme('colors.afternoon'), */
+            /* }, */
+            /* h5: { */
+            /*   color: theme('colors.afternoon'), */
+            /* }, */
             a: {
               color: theme('colors.sapphire')
             },

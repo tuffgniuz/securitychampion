@@ -35,9 +35,12 @@
   <div class="w-11/12 p-2 max-h-screen overflow-y-auto pr-4">
       <div class="flex justify-between items-center w-full">
         <!-- view mode -->
-        <div>
-          <select class="bg-midnightshadow py-1 px-4 rounded-md cursor-pointer">
-            <option>Issue</option> 
+        <div class="bg-midnightshadow px-2 py-1 rounded-md">
+          <select class="bg-midnightshadow cursor-pointer">
+            <option disabled>Issues</option> 
+            {#each data.issues as issue (issue.id)}
+              <option class="bg-midnightshadow" value={issue.name}>{issue.name}</option>
+            {/each}
           </select>
         </div>
         <input 
