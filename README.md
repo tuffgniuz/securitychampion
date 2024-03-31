@@ -4,8 +4,9 @@
 
 # Solomon - Security Standards Simplified
 
-![Lines of Code](https://img.shields.io/tokei/lines/github/tuffgniuz/solomon)
-
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/tuffgniuz/solomon?style=for-the-badge&labelColor=%23181926&color=%23eed49f)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/tuffgniuz/solomon?style=flat-square&labelColor=%23181926&color=%23a6da95)
+![GitHub License](https://img.shields.io/github/license/tuffgniuz/solomon?style=for-the-badge&labelColor=%23181926&color=%238bd5ca)
 
 ASVS Compliance Simplified for Developers
 
