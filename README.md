@@ -4,7 +4,8 @@
 
 # Solomon - Security Standards Simplified
 
-<img src="res/license-gpl-v3.svg" />
+![Lines of Code](https://img.shields.io/tokei/lines/github/tuffgniuz/solomon)
+
 
 ASVS Compliance Simplified for Developers
 
