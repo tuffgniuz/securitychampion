@@ -2,7 +2,7 @@
 	import { marked } from 'marked';
 
 	import { config } from '$lib/config';
-  import type { Category } from '$lib/types/models';
+  import type { Category, Requirement } from '$lib/types/models';
 
 	import RequirementDetailModal from './requirement-detail-modal.svelte';
 
@@ -12,6 +12,7 @@
 
   let showModal = false;
   let markdownContent = '';
+  let selectedRequirement: Requirement | null = null;
 
   $: filteredCategories = categories.filter(category => {
     let isCategoryMatch = !activeFilter.category || category.id === activeFilter.category;
@@ -42,11 +43,12 @@
     }
   };
      
-  const handleModalOpen = async (requirementId: string) => {
-    const response = await fetch(`${config.baseApiUrl}/api/v1/asvs/requirements/${requirementId}/markdown`)
+  const handleModalOpen = async (requirement: Requirement) => {
+    const response = await fetch(`${config.baseApiUrl}/api/v1/asvs/requirements/${requirement.requirement_id}/markdown`)
     if (response.ok) {
       const data = await response.json();
       markdownContent = marked.parse(data.content);
+      selectedRequirement = requirement;
       showModal = true;
     } else {
       console.log(`${response.statusText}`)
@@ -55,6 +57,7 @@
 
   const handleModalClose = () => {
     showModal = false;
+    selectedRequirement = null;
   }
 </script> 
 
@@ -101,7 +104,7 @@
             {#each sub_category.requirements as requirement (requirement.id)}
             <tr class="border-y border-base">
               <td class="p-3 italic align-top text-muted">{requirement.requirement_id}</td>
-              <td class="p-3 align-top cursor-pointer" on:click={() => handleModalOpen(requirement.requirement_id)}>{requirement.description}</td>
+              <td class="p-3 align-top cursor-pointer" on:click={() => handleModalOpen(requirement)}>{requirement.description}</td>
               <td class="p-3">
                 <div class="flex items-center gap-2">
                   {#if requirement.level1}<span class="rounded-lg bg-base border border-rosewater text-rosewater p-1 whitespace-nowrap text-sm">Level 1</span>{/if}
@@ -124,5 +127,5 @@
 {/if}
 
 {#if showModal}
-  <RequirementDetailModal bind:isOpen={showModal} {markdownContent} on:close={handleModalClose} />
+  <RequirementDetailModal bind:isOpen={showModal} {selectedRequirement} {markdownContent} on:close={handleModalClose} />
 {/if}

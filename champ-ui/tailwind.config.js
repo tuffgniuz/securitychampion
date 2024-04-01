@@ -7,8 +7,11 @@ export default {
         DEFAULT: {
           css: {
             color: theme('colors.morning'),
+            'code::before': { content: 'none'},
+            'code::after': { content: 'none'},
             h1: {
               color: theme('colors.mauve'),
+              marginBottom: '.5em'
             },
             h2: {
               color: theme('colors.yellow'),
@@ -31,8 +34,10 @@ export default {
               color: theme('colors.afternoon'),
             },
             hr: {
-              borderColor: theme('colors.midnightshadow'), // This line sets the color of <hr>
-              borderTopWidth: '1px', // You can set the thickness of the <hr> line here
+              borderColor: theme('colors.midnightshadow'),
+              borderTopWidth: '1px', 
+              marginTop: '0',
+              marginBottom: '1em'
             },
             blockquote: {
               /* backgroundColor: theme('colors.mantle'), */
@@ -42,6 +47,15 @@ export default {
               borderColor: theme('colors.midnightshadow'),
               /* borderWidth: '0', */
               /* borderRadius: '.5em' */
+            },
+            code: {
+              backgroundColor: theme('colors.mantle')
+            },
+            pre: {
+              backgroundColor: theme('colors.crust'),
+            },
+            'pre code': {
+              backgroundColor: theme('colors.crust'),
             },
             lineHeight: '1.75',
           }
