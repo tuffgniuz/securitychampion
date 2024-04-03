@@ -1,39 +1,48 @@
 <script lang="ts">
 	import { marked } from 'marked';
-
+	import { enhance } from '$app/forms';
 	import { config } from '$lib/config';
-  import type { Category, Requirement } from '$lib/types/models';
-
+  import type { Category, Issue, Requirement } from '$lib/types/models';
 	import RequirementDetailModal from './requirement-detail-modal.svelte';
 
-  export let categories: Category[];
-  export let activeFilter: { category: string | null; subCategory: string | null };
-  export let searchText = '';
+  type ActiveFilter = {
+    category: string | null;
+    subCategory: string | null;
+  };
 
-  let showModal = false;
-  let markdownContent = '';
+  export let categories: Category[];
+  export let activeFilter: ActiveFilter;
+  export let searchText = '';
+  export let selectedIssue: Issue | null = null;
+  let isOpen = false;
+  let content = '';
   let selectedRequirement: Requirement | null = null;
 
-  $: filteredCategories = categories.filter(category => {
-    let isCategoryMatch = !activeFilter.category || category.id === activeFilter.category;
+  $: filteredCategories = filterCategories(categories, activeFilter, searchText); 
 
-    let subCategoriesFiltered = category.sub_categories?.map(subCategory => {
-        const filteredRequirements = subCategory.requirements.filter(requirement => 
-            requirement.description.toLowerCase().includes(searchText.toLowerCase()) || 
-            requirement.requirement_id.toLowerCase().includes(searchText.toLowerCase()));
-        return { ...subCategory, requirements: filteredRequirements };
-    }).filter(subCategory => 
-      !activeFilter.subCategory || subCategory.id === activeFilter.subCategory
-    );
+  const filterCategories = (categories: Category[], activeFilter: ActiveFilter, searchText: string): Category[] => {
+    return categories.filter(category => {
+      let isCategoryMatch = !activeFilter.category || category.id === activeFilter.category;
 
-    return isCategoryMatch && subCategoriesFiltered?.length > 0;
-    }).map(category => ({ ...category, sub_categories: category.sub_categories.map(subCategory => {
+      let subCategoriesFiltered = category.sub_categories?.map(subCategory => {
         const filteredRequirements = subCategory.requirements?.filter(requirement => 
-            requirement.description.toLowerCase().includes(searchText.toLowerCase()) || 
-            requirement.requirement_id.toLowerCase().match(searchText.toLowerCase()));
+          requirement.description.toLowerCase().includes(searchText.toLowerCase()) || 
+          requirement.requirement_id.toLowerCase().includes(searchText.toLowerCase()));
+        return { ...subCategory, requirements: filteredRequirements };
+      }).filter(subCategory => 
+        !activeFilter.subCategory || subCategory.id === activeFilter.subCategory
+      );
+
+      return isCategoryMatch && subCategoriesFiltered?.length > 0;
+    }).map(category => ({
+      ...category, sub_categories: category.sub_categories?.map(subCategory => {
+        const filteredRequirements = subCategory.requirements.filter(requirement => 
+          requirement.description.toLowerCase().includes(searchText.toLowerCase()) || 
+          requirement.requirement_id.toLowerCase().match(searchText.toLowerCase()));
         return { ...subCategory, requirements: filteredRequirements };
       }).filter(subCategory => subCategory.requirements?.length > 0)
     }));
+  };
 
   const selectSubCategory = (subCategoryId: string) => {
     if (activeFilter.subCategory === subCategoryId) {
@@ -47,16 +56,16 @@
     const response = await fetch(`${config.baseApiUrl}/api/v1/asvs/requirements/${requirement.requirement_id}/markdown`)
     if (response.ok) {
       const data = await response.json();
-      markdownContent = marked.parse(data.content);
+      content = marked.parse(data.content);
       selectedRequirement = requirement;
-      showModal = true;
+      isOpen = true;
     } else {
       console.log(`${response.statusText}`)
     }
   }
 
   const handleModalClose = () => {
-    showModal = false;
+    isOpen = false;
     selectedRequirement = null;
   }
 </script> 
@@ -97,7 +106,7 @@
               <th class="p-3">ID</th>
               <th class="p-3">Description</th>
               <th class="p-3">Levels</th>
-              <th class="p-3">Action</th>
+              <th class="p-3"></th>
             </tr>
           </thead>
           <tbody>
@@ -113,7 +122,14 @@
                 </div>
               </td>
               <td class="p-3">
-                <button class="px-4 py-1 bg-base rounded-md">Select</button>
+              {#if selectedIssue !== null}
+                <form action="?/addRequirementToIssue" method="post" use:enhance>
+                  <input type="hidden" name="issueId" value={selectedIssue?.id}>
+                  <input type="hidden" name="requirementId" value={requirement.id}>
+                  <!-- Button to add requirement to the selected issue -->
+                  <button class="px-4 py-1 bg-base rounded-md">Select</button>
+                </form>
+              {/if}
               </td>
             </tr>
             {/each}
@@ -126,6 +142,9 @@
 </div>
 {/if}
 
-{#if showModal}
-  <RequirementDetailModal bind:isOpen={showModal} {selectedRequirement} {markdownContent} on:close={handleModalClose} />
-{/if}
+<RequirementDetailModal 
+  {isOpen} 
+  {selectedRequirement} 
+  {content} 
+  on:close={handleModalClose} 
+/>
