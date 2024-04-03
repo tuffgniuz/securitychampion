@@ -40,9 +40,7 @@ In essence, Solomon acts as a bridge between the theoretical and practical aspec
 
 ## Acknowledgements
 
-This project was inspired by the [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool).
-
-Furthermore, Solomon is built on top of the [OWASP ASVS](https://github.com/OWASP/ASVS) and [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
+This project was inspired by the [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool). Furthermore, Solomon is built on top of the [OWASP ASVS](https://github.com/OWASP/ASVS) and [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
 
 ## License
 

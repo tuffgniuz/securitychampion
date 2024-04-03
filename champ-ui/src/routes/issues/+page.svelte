@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { enhance } from "$app/forms";
 	import { LucideChevronDown, LucideCopy } from "lucide-svelte";
-	import IssueCard from "../../components/issue-card.svelte";
 
   export let data;
 
@@ -22,7 +21,8 @@
 <div class="flex flex-col gap-4 my-10">
 {#each data.issues as issue (issue.id)}
   <div class="
-      bg-midnightshadow 
+      border
+      border-midnightshadow 
       cursor-pointer
       px-4 
       py-2 
@@ -35,7 +35,7 @@
   >
     <h5 class="font-semibold">{issue.name}</h5>
     <div class="flex items-center gap-5">
-      <button class="bg-mantle rounded-md p-2">
+      <button class="rounded-md p-2 hover:bg-midnightshadow transition-all duration-500 ease-in-out">
         <LucideCopy size="16"/>
       </button>
       <span>

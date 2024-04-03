@@ -4,6 +4,7 @@
 	import { config } from '$lib/config';
   import type { Category, Issue, Requirement } from '$lib/types/models';
 	import RequirementDetailModal from './requirement-detail-modal.svelte';
+	import { LucideCheck } from 'lucide-svelte';
 
   type ActiveFilter = {
     category: string | null;
@@ -122,14 +123,12 @@
                 </div>
               </td>
               <td class="p-3">
-              {#if selectedIssue !== null}
                 <form action="?/addRequirementToIssue" method="post" use:enhance>
                   <input type="hidden" name="issueId" value={selectedIssue?.id}>
                   <input type="hidden" name="requirementId" value={requirement.id}>
                   <!-- Button to add requirement to the selected issue -->
                   <button class="px-4 py-1 bg-base rounded-md">Select</button>
                 </form>
-              {/if}
               </td>
             </tr>
             {/each}

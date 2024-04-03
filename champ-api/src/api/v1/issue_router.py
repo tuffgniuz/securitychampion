@@ -34,7 +34,4 @@ async def delete(id: str, service: IssueService = Depends(IssueService)):
 
 @router.post('/issues/{issue_id}/requirements/{requirement_id}')
 async def add_requirement_to_issue(issue_id: str, requirement_id: str, service: IssueService = Depends(IssueService)):
-    try:
-        return await service.add_requirement_to_issue(issue_id, requirement_id)
-    except ValueError as e:
-        raise HTTPException(status_code=404, detail=str(e))
+    return await service.add_requirement_to_issue(issue_id, requirement_id)
