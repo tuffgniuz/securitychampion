@@ -17,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-nord-polarnight-50 text-nord-snowstorm-50 ${rubik.className}`}>{children}</body>
+      <body className={`bg-nord-polarnight-50 text-nord-snowstorm-50 ${rubik.className}`}>
+        {children}
+      </body>
     </html>
   );
 }

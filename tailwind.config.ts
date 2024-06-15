@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+    screens: {
+      "4xl": "2500px"
+    },
     colors: {
         nord: {
           polarnight: {
