@@ -63,7 +63,7 @@ const Home = async () => {
           <p className="mb-5">{c.summary}</p>
           <SubCategories subCategories={c.sub_categories} />
           {/* TODO: Render requirements table or requirements masonry view */}
-          <RequirementsTable subCategories={c.sub_categories} />
+          <RequirementsTable subCategories={c.sub_categories} categoryName={c.category_name} />
           {/* <RequirementsMasonry /> */}
         </div>
       ))} 

@@ -1,12 +1,12 @@
 import { FC } from "react";
 import Link from "next/link";
-import { LucideBookMarked, LucideBookmark, LucideGithub } from "lucide-react";
+import { LucideBookMarked, LucideGithub } from "lucide-react";
 import Image from "next/image";
 
 const Topbar: FC = () => {
   return (
-    <div className="h-12 border-b border-nord-polarnight-100 mb-10">
-      <div className="h-full w-5/6 4xl:w-3/6 mx-auto flex items-center justify-between">
+    <div className="h-16 border-b border-nord-polarnight-100 mb-10">
+      <div className="h-full w-4/6 4xl:w-3/6 mx-auto flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/solomon.svg" alt="Logo" width={30} height={30} />
