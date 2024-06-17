@@ -4,20 +4,22 @@ import { FC, useState } from "react";
 import { LucideCheck } from "lucide-react";
 
 import BookmarkButton from "./bookmark-button";
-import Link from "next/link";
 
 import Peek from "./peek";
 
 interface Props {
+  on
   subCategories: SubCategory[];
   categoryName: string;
 }
 
 const RequirementsTable: FC<Props> = ({ subCategories, categoryName }) => {
+  const [peekIsVisible, setPeekIsVisible] = useState<boolean>(false);
   const [selectedRequirementId, setSelectedRequirementId] = useState<string | null>(null);
   // const [selectedRequirementCategoryName, setSelectedRequirementCategoryName] = useState<string | null>(null);
 
   const handleRowClick = (requirementId: string) => {
+    setPeekIsVisible(true)
     setSelectedRequirementId(requirementId);
     // setSelectedRequirementCategoryName(categoryName)
   };
@@ -25,7 +27,7 @@ const RequirementsTable: FC<Props> = ({ subCategories, categoryName }) => {
   return (
     <>
       {subCategories.map((sc) => (
-        <div key={sc.sub_category_id} className="border border-nord-polarnight-100 rounded-lg mb-5">
+        <div key={sc.sub_category_id} className="border border-nord-polarnight-100 rounded-lg mb-5 shadow-md">
           <div className="bg-nord-polarnight-100 rounded-t-lg">
             <h2 className="flex items-center gap-2 p-2 font-semibold">
               <span>
@@ -61,7 +63,7 @@ const RequirementsTable: FC<Props> = ({ subCategories, categoryName }) => {
                   onClick={() => handleRowClick(r.requirement_id, )}
                 >
                   <td className="p-2 text-sm font-thin">{r.requirement_id}</td>
-                  <td className="p-2"><Link href="?showDialog=y">{r.description}</Link></td>
+                  <td className="p-2">{r.description}</td>
                   <td className="p-2">{r.level1 && (<LucideCheck size={12} />)}</td>
                   <td className="p-2">{r.level2 && (<LucideCheck size={12} />)}</td>
                   <td className="p-2">{r.level3 && (<LucideCheck size={12} />)}</td>
@@ -72,7 +74,14 @@ const RequirementsTable: FC<Props> = ({ subCategories, categoryName }) => {
           </table>
         </div>
       ))}
-      {selectedRequirementId && <Peek requirementId={selectedRequirementId} categoryName={categoryName} />}
+      {peekIsVisible && (
+        <Peek 
+          isOpen={peekIsVisible} 
+          onClose={() => setPeekIsVisible(false)} 
+          requirementId={selectedRequirementId} 
+          categoryName={categoryName} 
+        />
+      )}
     </>
   );
 }

@@ -1,22 +1,20 @@
 "use client";
 import { FC, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { LucideX } from "lucide-react";
+
 import MarkdownContent from "./markdown-content";
 
 interface Props {
+  isOpen: boolean;
+  onClose: () => void;
   categoryName: string;
-  requirementId: string;
+  requirementId: string | null;
 }
 
-const Peek: FC<Props> = ({ categoryName, requirementId }) => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const showDialog = searchParams.get("showDialog");
-
+const Peek: FC<Props> = ({ isOpen, onClose, categoryName, requirementId }) => {
   const closeModal = () => {
-    router.back();
+    onClose();
   };
 
   useEffect(() => {
@@ -46,7 +44,7 @@ const Peek: FC<Props> = ({ categoryName, requirementId }) => {
 
   return (
     <AnimatePresence>
-      {showDialog === "y" && (
+      {isOpen && (
         <motion.div
           initial="hidden"
           animate="visible"
