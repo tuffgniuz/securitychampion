@@ -5,11 +5,12 @@ import html from "remark-html";
 import rehypeHighlight from "rehype-highlight";
 
 interface Props {
-  requirementId: string;
+  requirementId: string | null;
 }
 
 const MarkdownContent: FC<Props> = ({ requirementId }) => {
   const [content, setContent] = useState<string>("");
+  const [error, setError] = useState<unknown | null>(null)
 
   useEffect(() => {
     const fetchMarkdownContent = async () => {
@@ -25,8 +26,9 @@ const MarkdownContent: FC<Props> = ({ requirementId }) => {
           .use(rehypeHighlight)
           .process(markdownContent);
         setContent(processedContent.toString());
-      } catch (error) {
-        console.error("Error fetching markdown content:", error);
+      } catch (error: unknown) {
+        setError(error)
+        console.log(error)
       }
     };
 
@@ -47,8 +49,14 @@ const MarkdownContent: FC<Props> = ({ requirementId }) => {
       prose-headings:text-nord-frost-50
       prose-h1:text-xl
       prose-h1:text-nord-aurora-purple
+      prose-blockquote:text-nord-snowstorm-50
+      prose-blockquote:border-l-nord-polarnight-200
+      prose-blockquote:my-12
+      prose-strong:text-nord-aurora-yellow
+      prose-a:text-nord-frost-200
       ">
-    <div dangerouslySetInnerHTML={{ __html: content }} />;
+      {error && (<p>Nothing here yet</p>)}
+      <div dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   )
 };

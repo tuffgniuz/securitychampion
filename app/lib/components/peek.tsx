@@ -59,15 +59,15 @@ const Peek: FC<Props> = ({ isOpen, onClose, categoryName, requirementId }) => {
             exit="exit"
             variants={modalVariants}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="bg-nord-polarnight-100 text-nord-snowstorm-50 w-1/2 4xl:w-1/3 h-full shadow-lg overflow-y-auto"
+            className="bg-nord-polarnight-100 text-nord-snowstorm-50 w-1/2 4xl:w-1/2 h-full shadow-lg overflow-y-auto"
           >
-            <header className="h-12 flex items-center justify-between px-20 py-10 mb-5">
-              <span className="text-xs">Requirement {requirementId}</span>
+            <header className="h-12 flex items-center justify-end w-4/5 4xl:2-3/5 mx-auto py-10 mb-5">
               <button onClick={closeModal}>
                 <LucideX />
               </button>
             </header>
-            <div className="px-20">
+            <div className="w-4/5 4xl:w-3/5 mx-auto">
+              <p className="text-xs mb-5">Requirement {requirementId}</p>
               <h2 className="mb-5 bg-nord-polarnight-25 px-2 py-1 rounded-lg inline-flex">{categoryName}</h2>
               <MarkdownContent requirementId={requirementId} />
             </div>
