@@ -5,10 +5,10 @@ import { LucideBookmarkCheck, LucideBookmarkPlus } from "lucide-react";
 
 interface Props {
   requirementId: string;
-  onBookmarkChange: (requirementId: string, bookmarked: boolean) => void;
+  onBookmarkChange?: (requirementId: string, bookmarked: boolean) => void; // Make it optional
 }
 
-const BookmarkButton: FC<Props> = ({ requirementId, onBookmarkChange }) => {
+const BookmarkButton: FC<Props> = ({ requirementId, onBookmarkChange = () => {} }) => { // Provide default no-op function
   const [bookmarked, setBookmarked] = useState<boolean>(false);
 
   useEffect(() => {
