@@ -19,7 +19,9 @@ const useAsvsData = (): UseAsvsDataResult => {
   const [data, setData] = useState<Category[]>([]);
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(
+    null,
+  );
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {
@@ -36,13 +38,26 @@ const useAsvsData = (): UseAsvsDataResult => {
   }, []);
 
   const filteredData = useMemo(() => {
-    return data.filter(category => {
-      if (selectedCategory && category.category_id !== selectedCategory) return false;
-      return category.sub_categories.some(subCategory => {
-        if (selectedSubCategory && subCategory.sub_category_id !== selectedSubCategory) return false;
-        return subCategory.requirements.some(requirement => {
-          if (selectedLevel !== null && !requirement[`level${selectedLevel}`]) return false;
-          if (searchQuery && !requirement.requirement_id.includes(searchQuery) && !requirement.description.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+    return data.filter((category) => {
+      if (selectedCategory && category.category_id !== selectedCategory)
+        return false;
+      return category.sub_categories.some((subCategory) => {
+        if (
+          selectedSubCategory &&
+          subCategory.sub_category_id !== selectedSubCategory
+        )
+          return false;
+        return subCategory.requirements.some((requirement) => {
+          if (selectedLevel !== null && !requirement[`level${selectedLevel}`])
+            return false;
+          if (
+            searchQuery &&
+            !requirement.requirement_id.includes(searchQuery) &&
+            !requirement.description
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase())
+          )
+            return false;
           return true;
         });
       });
@@ -59,7 +74,7 @@ const useAsvsData = (): UseAsvsDataResult => {
     selectedSubCategory,
     setSelectedSubCategory,
     searchQuery,
-    setSearchQuery
+    setSearchQuery,
   };
 };
 

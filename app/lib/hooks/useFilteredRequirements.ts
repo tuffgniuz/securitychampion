@@ -44,4 +44,3 @@ const useFilteredRequirements = (
 };
 
 export default useFilteredRequirements;
-
