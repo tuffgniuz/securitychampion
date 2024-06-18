@@ -55,6 +55,8 @@ const MarkdownContent: FC<Props> = ({ requirementId }) => {
       prose-strong:text-nord-aurora-yellow
       prose-a:text-nord-frost-200
       prose-hr:border-t-nord-polarnight-300
+      prose-code:text-nord-snowstorm-50
+      prose-code:font-thin
       ">
       {error && (<p>Nothing here yet</p>)}
       <div dangerouslySetInnerHTML={{ __html: content }} />
