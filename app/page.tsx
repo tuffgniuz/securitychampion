@@ -1,9 +1,8 @@
-"use client"
+"use client";
 import { NextPage } from "next";
-import { useState, useEffect } from "react";
 import { LucideShieldCheck } from "lucide-react";
 
-import { fetchAsvsData } from "./lib/utils/data";
+import useAsvsData from "./lib/hooks/useAsvsData";
 
 import RequirementsTable from "./lib/components/requirements-table";
 import SubCategories from "./lib/components/sub-categories";
@@ -13,42 +12,23 @@ import Button from "./lib/components/button";
 import FloatingButton from "./lib/components/floating-button";
 
 const Home: NextPage = () => {
-  const [data, setData] = useState<Category[]>([]);
-  const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchAsvsData();
-        setData(data);
-      } catch (error) {
-        console.error("Failed to fetch data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const filterData = () => {
-    return data.filter(category => {
-      if (selectedCategory && category.category_id !== selectedCategory) return false;
-      return category.sub_categories.some(subCategory => {
-        if (selectedSubCategory && subCategory.sub_category_id !== selectedSubCategory) return false;
-        return subCategory.requirements.some(requirement => {
-          if (selectedLevel !== null && !requirement[`level${selectedLevel}`]) return false;
-          return true;
-        });
-      });
-    });
-  };
-
-  const filteredData = filterData();
+    const {
+    data,
+    filteredData,
+    selectedLevel,
+    setSelectedLevel,
+    selectedCategory,
+    setSelectedCategory,
+    selectedSubCategory,
+    setSelectedSubCategory,
+    searchQuery,
+    setSearchQuery
+  } = useAsvsData();
 
   return (
+    <>
     <Container>
-      <RequirementsSearchInput />
+      <RequirementsSearchInput searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       {/* Level filter buttons */}
       <div className="flex items-center gap-2 mb-5">
@@ -71,7 +51,7 @@ const Home: NextPage = () => {
             key={c.category_id}
             icon={<span className="font-thin">{c.category_id}</span>}
             text={c.category_name}
-            size="sm"
+            size="md"
             active={selectedCategory === c.category_id}
             onClick={() => {
               setSelectedCategory(selectedCategory === c.category_id ? null : c.category_id);
@@ -98,12 +78,15 @@ const Home: NextPage = () => {
             categoryName={c.category_name}
             selectedSubCategory={selectedSubCategory}
             selectedLevel={selectedLevel}
+            searchQuery={searchQuery}
           />
         </div>
       ))}
       <FloatingButton />
     </Container>
+    </>
   );
 };
 
 export default Home;
+

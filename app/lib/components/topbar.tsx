@@ -1,7 +1,7 @@
 import { FC } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { LucideBookMarked, LucideGithub, LucideInfo } from "lucide-react";
-import Image from "next/image";
 
 const Topbar: FC = () => {
   return (
