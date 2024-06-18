@@ -34,8 +34,7 @@ Solomon is a self-hosted web application designed to simplify the collection and
 - **Educational Context**: Provides detailed context for each requirement to facilitate better understanding.
 
 ## Related Projects
-
-- [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool). 
+- Solomon is heavily inspired by [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool). 
 - [OWASP ASVS](https://github.com/OWASP/ASVS) 
 - [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
 
