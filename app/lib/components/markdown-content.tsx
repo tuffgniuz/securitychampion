@@ -10,7 +10,7 @@ interface Props {
 
 const MarkdownContent: FC<Props> = ({ requirementId }) => {
   const [content, setContent] = useState<string>("");
-  const [error, setError] = useState<unknown | null>(null)
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchMarkdownContent = async () => {
@@ -26,9 +26,9 @@ const MarkdownContent: FC<Props> = ({ requirementId }) => {
           .use(rehypeHighlight)
           .process(markdownContent);
         setContent(processedContent.toString());
-      } catch (error: unknown) {
-        setError(error)
-        console.log(error)
+      } catch (error) {
+        setError("Failed to load content");
+        console.error(error);
       }
     };
 
@@ -38,7 +38,8 @@ const MarkdownContent: FC<Props> = ({ requirementId }) => {
   }, [requirementId]);
 
   return (
-    <div className="
+    <div
+      className="
       prose
       max-w-none
       text-nord-snowstorm-50
@@ -57,11 +58,12 @@ const MarkdownContent: FC<Props> = ({ requirementId }) => {
       prose-hr:border-t-nord-polarnight-300
       prose-code:text-nord-snowstorm-50
       prose-code:font-thin
-      ">
-      {error && (<p>Nothing here yet</p>)}
+      "
+    >
+      {error && <p>Nothing here yet</p>}
       <div dangerouslySetInnerHTML={{ __html: content }} />
     </div>
-  )
+  );
 };
 
 export default MarkdownContent;
