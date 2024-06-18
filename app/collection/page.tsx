@@ -6,6 +6,7 @@ import useBookmarkedRequirements from "../lib/hooks/useBookmarkedRequirements";
 
 import RequirementsMasonry from "../lib/components/requirements-masonry";
 import Container from "../lib/components/container";
+import { exportToMarkdown } from "../lib/utils/exportToMarkdown";
 
 const CollectionPage: NextPage = () => {
   const { bookmarkedRequirements, setBookmarkedRequirements } = useBookmarkedRequirements();
@@ -18,6 +19,25 @@ const CollectionPage: NextPage = () => {
     }
   };
 
+  const handleExportToMarkdown = () => {
+    const markdownContent = exportToMarkdown(bookmarkedRequirements);
+
+    // Create a Blob from the Markdown content
+    const blob = new Blob([markdownContent], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+
+    // Create an anchor element and trigger the download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'bookmarked-requirements.md';
+    document.body.appendChild(a);
+    a.click();
+
+    // Clean up the URL and remove the anchor element
+    URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  }
+
   return (
     <Container>
       <div className="flex items-center justify-between mb-10">
@@ -27,9 +47,12 @@ const CollectionPage: NextPage = () => {
             {bookmarkedRequirements.length}
           </span>
         </h1>
-        <button className="flex items-center gap-2 bg-nord-polarnight-25 px-4 py-1 rounded-lg">
+        <button 
+          className="flex items-center gap-2 bg-nord-polarnight-25 px-4 py-1 rounded-lg"
+          onClick={handleExportToMarkdown}
+        >
           <LucideArrowRightFromLine size={14} />
-          Export
+          Export to markdown
         </button>
       </div>
       <RequirementsMasonry

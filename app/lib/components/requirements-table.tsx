@@ -1,38 +1,43 @@
-"use client";
-
 import { FC, useState } from "react";
 import { LucideCheck } from "lucide-react";
 
 import BookmarkButton from "./bookmark-button";
-
 import Peek from "./peek";
 
 interface Props {
-  on
   subCategories: SubCategory[];
   categoryName: string;
+  selectedSubCategory: string | null;
+  selectedLevel: number | null;
 }
 
-const RequirementsTable: FC<Props> = ({ subCategories, categoryName }) => {
+const RequirementsTable: FC<Props> = ({ subCategories, categoryName, selectedSubCategory, selectedLevel }) => {
   const [peekIsVisible, setPeekIsVisible] = useState<boolean>(false);
   const [selectedRequirementId, setSelectedRequirementId] = useState<string | null>(null);
-  // const [selectedRequirementCategoryName, setSelectedRequirementCategoryName] = useState<string | null>(null);
 
   const handleRowClick = (requirementId: string) => {
-    setPeekIsVisible(true)
+    setPeekIsVisible(true);
     setSelectedRequirementId(requirementId);
-    // setSelectedRequirementCategoryName(categoryName)
+  };
+
+  const filteredSubCategories = selectedSubCategory
+    ? subCategories.filter(sc => sc.sub_category_id === selectedSubCategory)
+    : subCategories;
+
+  const filterRequirements = (requirements: Requirement[]) => {
+    return requirements.filter(requirement => {
+      if (selectedLevel === null) return true;
+      return requirement[`level${selectedLevel}`];
+    });
   };
 
   return (
     <>
-      {subCategories.map((sc) => (
+      {filteredSubCategories.map(sc => (
         <div key={sc.sub_category_id} className="border border-nord-polarnight-100 rounded-lg mb-5 shadow-md">
           <div className="bg-nord-polarnight-100 rounded-t-lg">
             <h2 className="flex items-center gap-2 p-2 font-semibold">
-              <span>
-                {sc.sub_category_id}
-              </span>
+              <span>{sc.sub_category_id}</span>
               {sc.sub_category_name}
             </h2>
           </div>
@@ -48,22 +53,16 @@ const RequirementsTable: FC<Props> = ({ subCategories, categoryName }) => {
               </tr>
             </thead>
             <tbody>
-              {sc.requirements.map((r) => (
+              {filterRequirements(sc.requirements).map(r => (
                 <tr 
                   key={r.requirement_id}
-                  className="
-                    border-t 
-                    border-nord-polarnight-100
-                    hover:bg-nord-polarnight-25
-                    transition-all
-                    duration-300
-                    ease-in-out
-                    cursor-pointer
-                "
-                  onClick={() => handleRowClick(r.requirement_id, )}
+                  className="border-t border-nord-polarnight-100 hover:bg-nord-polarnight-25 transition-all duration-300 ease-in-out cursor-pointer"
                 >
                   <td className="p-2 text-sm font-thin">{r.requirement_id}</td>
-                  <td className="p-2">{r.description}</td>
+                  <td 
+                    className="p-2"
+                    onClick={() => handleRowClick(r.requirement_id)}
+                  >{r.description}</td>
                   <td className="p-2">{r.level1 && (<LucideCheck size={12} />)}</td>
                   <td className="p-2">{r.level2 && (<LucideCheck size={12} />)}</td>
                   <td className="p-2">{r.level3 && (<LucideCheck size={12} />)}</td>
@@ -84,6 +83,6 @@ const RequirementsTable: FC<Props> = ({ subCategories, categoryName }) => {
       )}
     </>
   );
-}
+};
 
 export default RequirementsTable;

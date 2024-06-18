@@ -1,8 +1,12 @@
-import { LucideBookMarked } from "lucide-react";
-import Link from "next/link";
 import { FC } from "react";
+import Link from "next/link";
+import { LucideBookMarked } from "lucide-react";
 
-const FloatingButton: FC = () => {
+interface Props {
+  totalBookmarked: number;
+}
+
+const FloatingButton: FC<Props> = ({ totalBookmarked }) => {
   return (
     <Link 
       href="/collection"
@@ -11,12 +15,28 @@ const FloatingButton: FC = () => {
         right-4 
         bg-nord-aurora-green 
         text-white 
-        p-2 
-        rounded-full 
+        px-4
+        py-2
+        rounded-xl 
         drop-shadow-xl 
+        flex
+        items-center 
+        gap-2
       "
     >
+
       <LucideBookMarked size="20" />
+      <span 
+        className="
+          inline-flex
+          bg-nord-snowstorm-50 
+          text-nord-aurora-green
+          font-semibold
+          px-1
+          rounded-full
+        ">
+        0
+      </span>
     </Link>
   )
 }

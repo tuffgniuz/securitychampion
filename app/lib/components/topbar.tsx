@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import { LucideBookMarked, LucideGithub } from "lucide-react";
+import { LucideBookMarked, LucideGithub, LucideInfo } from "lucide-react";
 import Image from "next/image";
 
 const Topbar: FC = () => {
@@ -34,6 +34,12 @@ const Topbar: FC = () => {
           ">
             <LucideBookMarked size={16} />
             Collection
+          </Link>
+          <Link
+            href="/about"
+            className="bg-nord-frost-300 rounded-full p-2"
+          >
+            <LucideInfo size={16} />
           </Link>
           <Link 
             href="https://github.com/tuffgniuz/solomon"

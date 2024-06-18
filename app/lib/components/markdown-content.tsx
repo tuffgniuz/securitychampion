@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
-import matter from "gray-matter";
 import { remark } from "remark";
+import matter from "gray-matter";
 import html from "remark-html";
 import rehypeHighlight from "rehype-highlight";
 
@@ -54,6 +54,7 @@ const MarkdownContent: FC<Props> = ({ requirementId }) => {
       prose-blockquote:my-12
       prose-strong:text-nord-aurora-yellow
       prose-a:text-nord-frost-200
+      prose-hr:border-t-nord-polarnight-300
       ">
       {error && (<p>Nothing here yet</p>)}
       <div dangerouslySetInnerHTML={{ __html: content }} />
