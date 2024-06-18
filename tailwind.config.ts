@@ -36,7 +36,7 @@ const config: Config = {
             orange: "#d08770",
             yellow: "#ebcb8b",
             green: "#a3be8c",
-            purple: "#b48ead",
+            magenta: "#b48ead",
           },
         },
       },

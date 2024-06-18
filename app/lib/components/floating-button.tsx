@@ -3,7 +3,7 @@ import Link from "next/link";
 import { LucideBookMarked } from "lucide-react";
 
 interface Props {
-  totalBookmarked: number;
+  totalBookmarked?: number;
 }
 
 const FloatingButton: FC<Props> = ({ totalBookmarked }) => {

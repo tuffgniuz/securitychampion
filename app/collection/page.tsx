@@ -2,11 +2,11 @@
 import { NextPage } from "next";
 import { LucideArrowRightFromLine } from "lucide-react";
 
+import exportToMarkdown from "../lib/utils/exportToMarkdown";
 import useBookmarkedRequirements from "../lib/hooks/useBookmarkedRequirements";
 
 import RequirementsMasonry from "../lib/components/requirements-masonry";
 import Container from "../lib/components/container";
-import { exportToMarkdown } from "../lib/utils/exportToMarkdown";
 
 const CollectionPage: NextPage = () => {
   const { bookmarkedRequirements, setBookmarkedRequirements } = useBookmarkedRequirements();

@@ -7,7 +7,7 @@ interface Requirement {
 
 const md = new MarkdownIt();
 
-export const exportToMarkdown = (bookmarkedRequirements: Requirement[]): string => {
+const exportToMarkdown = (bookmarkedRequirements: Requirement[]): string => {
   let markdownContent = '';
 
   bookmarkedRequirements.forEach(req => {
@@ -17,3 +17,4 @@ export const exportToMarkdown = (bookmarkedRequirements: Requirement[]): string 
   return md.render(markdownContent);
 };
 
+export default exportToMarkdown

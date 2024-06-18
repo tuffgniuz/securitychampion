@@ -1,7 +1,7 @@
 "use client";
 import { FC } from "react";
-
 import { LucideShieldCheck } from "lucide-react";
+
 import BookmarkButton from "./bookmark-button";
 
 interface Props {

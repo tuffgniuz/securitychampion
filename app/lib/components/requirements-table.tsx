@@ -11,7 +11,12 @@ interface Props {
   selectedLevel: number | null;
 }
 
-const RequirementsTable: FC<Props> = ({ subCategories, categoryName, selectedSubCategory, selectedLevel }) => {
+const RequirementsTable: FC<Props> = ({ 
+  subCategories, 
+  categoryName, 
+  selectedSubCategory, 
+  selectedLevel 
+}) => {
   const [peekIsVisible, setPeekIsVisible] = useState<boolean>(false);
   const [selectedRequirementId, setSelectedRequirementId] = useState<string | null>(null);
 
