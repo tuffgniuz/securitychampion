@@ -1,5 +1,5 @@
 "use client";
-import { FC, useEffect } from "react";
+import { FC, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LucideX } from "lucide-react";
 
@@ -13,9 +13,9 @@ interface Props {
 }
 
 const Peek: FC<Props> = ({ isOpen, onClose, categoryName, requirementId }) => {
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     onClose();
-  };
+  }, [onClose]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
