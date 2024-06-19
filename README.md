@@ -6,6 +6,7 @@
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/tuffgniuz/solomon?style=for-the-badge&labelColor=%23181926&color=%23eed49f)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/tuffgniuz/solomon?style=for-the-badge&labelColor=%23181926&color=%23a6da95)
+![Build and deploy](https://img.shields.io/github/actions/workflow/status/tuffgniuz/solomon/build-and-deploy.yml?branch=master&style=for-the-badge)
 ![GitHub License](https://img.shields.io/github/license/tuffgniuz/solomon?style=for-the-badge&labelColor=%23181926&color=%238bd5ca)
 
 ASVS Compliance Simplified for Developers
@@ -47,12 +48,12 @@ Run development server:
 yarn dev
 ```
 
-## Related Projects
+### Related Projects
 - Solomon is heavily inspired by [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool). 
 - [OWASP ASVS](https://github.com/OWASP/ASVS) 
 - [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
 
-## License
+### License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
