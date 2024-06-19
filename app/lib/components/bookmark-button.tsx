@@ -8,7 +8,11 @@ interface Props {
   onBookmarkChange?: (requirementId: string, bookmarked: boolean) => void; // Make it optional
 }
 
-const BookmarkButton: FC<Props> = ({ requirementId, onBookmarkChange = () => {} }) => { // Provide default no-op function
+const BookmarkButton: FC<Props> = ({
+  requirementId,
+  onBookmarkChange = () => {},
+}) => {
+  // Provide default no-op function
   const [bookmarked, setBookmarked] = useState<boolean>(false);
 
   useEffect(() => {
@@ -38,10 +42,10 @@ const BookmarkButton: FC<Props> = ({ requirementId, onBookmarkChange = () => {} 
       onClick={toggleBookmark}
       className={`
         border
-        border-nord-aurora-green
+        border-nord-aurora-400
         p-2 
         rounded-lg
-        ${bookmarked ? "bg-nord-aurora-green text-nord-polarnight-25" : "border border-nord-aurora-green text-nord-aurora-green hover:bg-nord-aurora-green hover:text-nord-polarnight-25 transition-colors duration-300 ease-in-out"}
+        ${bookmarked ? "bg-nord-aurora-400 text-nord-polarnight-25" : "border border-nord-aurora-green text-nord-aurora-400 hover:bg-nord-aurora-400 hover:text-nord-polarnight-25 transition-colors duration-300 ease-in-out"}
       `}
     >
       {bookmarked && <LucideBookmarkCheck size={14} />}

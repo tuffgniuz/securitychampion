@@ -71,7 +71,7 @@ const Home: NextPage = () => {
         {/* Render filtered data */}
         {filteredData.map((c) => (
           <div key={c.category_id} className="mb-10">
-            <h1 className="text-nord-aurora-purple text-2xl font-semibold mb-5">
+            <h1 className="text-nord-aurora-500 text-2xl font-semibold mb-5">
               {c.category_id} {c.category_name}
             </h1>
             <p className="mb-5 text-lg">{c.summary}</p>

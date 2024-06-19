@@ -5,13 +5,16 @@ interface Props {
   setSearchQuery: (query: string) => void;
 }
 
-const RequirementsSearchInput: FC<Props> = ({ searchQuery, setSearchQuery }) => {
+const RequirementsSearchInput: FC<Props> = ({
+  searchQuery,
+  setSearchQuery,
+}) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
 
   return (
-    <input 
+    <input
       type="search"
       placeholder="Search requirement id or description ..."
       value={searchQuery}
@@ -24,7 +27,7 @@ const RequirementsSearchInput: FC<Props> = ({ searchQuery, setSearchQuery }) => 
         bg-nord-polarnight-100 
         focus:outline
         focus:outline-1
-        focus:outline-nord-aurora-magenta
+        focus:outline-nord-aurora-500
         transition-all
         duration-500
         ease-in-out
@@ -33,8 +36,7 @@ const RequirementsSearchInput: FC<Props> = ({ searchQuery, setSearchQuery }) => 
         rounded-xl
       "
     />
-  )
-}
+  );
+};
 
 export default RequirementsSearchInput;
-

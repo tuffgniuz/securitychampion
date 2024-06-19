@@ -12,16 +12,18 @@ const Topbar: FC = () => {
             <Image src="/solomon.svg" alt="Logo" width={30} height={30} />
             <h1>Solomon</h1>
           </Link>
-          <span className="bg-nord-polarnight-25 rounded-lg px-2 py-1 text-xs">ASVS 4.0.3</span>
+          <span className="bg-nord-polarnight-25 rounded-lg px-2 py-1 text-xs">
+            ASVS 4.0.3
+          </span>
         </div>
         <div className="flex items-center gap-3">
-          <Link 
-            href="/collection" 
+          <Link
+            href="/collection"
             className="
               border
-              border-nord-aurora-green 
-              text-nord-aurora-green
-              hover:bg-nord-aurora-green
+              border-nord-aurora-400 
+              text-nord-aurora-400
+              hover:bg-nord-aurora-400
               hover:text-nord-snowstorm-50
               transition-all 
               duration-300
@@ -31,17 +33,15 @@ const Topbar: FC = () => {
               flex 
               items-center 
               gap-2
-          ">
+          "
+          >
             <LucideBookMarked size={16} />
             Collection
           </Link>
-          <Link
-            href="/about"
-            className="bg-nord-frost-300 rounded-full p-2"
-          >
+          <Link href="/about" className="bg-nord-frost-300 rounded-full p-2">
             <LucideInfo size={16} />
           </Link>
-          <Link 
+          <Link
             href="https://github.com/tuffgniuz/solomon"
             className="bg-nord-polarnight-25 rounded-full p-2"
           >
@@ -50,7 +50,7 @@ const Topbar: FC = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Topbar;
