@@ -1,5 +1,11 @@
 import { fetchAsvsData } from "./data";
 
+export const addBookmark = (requirementId: string): void => {
+  const bookmarks = getBookmarks();
+  bookmarks.push(requirementId);
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+};
+
 /**
  * Retrieves bookmarks from localStorage.
  *
@@ -49,4 +55,14 @@ export const getBookmarkedRequirements = async (): Promise<Requirement[]> => {
   const bookmarks = getBookmarks();
   const data = await fetchAsvsData();
   return filteredBookmarkedRequirements(data, bookmarks);
+};
+
+export const removeBookmark = (requirementId: string): void => {
+  const bookmarks = getBookmarks().filter((id) => id !== requirementId);
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+};
+
+export const isBookmarked = (requirementId: string): boolean => {
+  const bookmarks = getBookmarks();
+  return bookmarks.includes(requirementId);
 };
