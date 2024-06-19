@@ -14,7 +14,7 @@ interface SubCategory {
 interface Requirement {
   requirement_id: string;
   description: string;
-  level1: boolean;
-  level2: boolean;
-  level3: boolean;
+  level1?: boolean;
+  level2?: boolean;
+  level3?: boolean;
 }

@@ -14,6 +14,18 @@ interface UseAsvsDataResult {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
 }
+interface UseAsvsDataResult {
+  data: Category[];
+  filteredData: Category[];
+  selectedLevel: number | null;
+  setSelectedLevel: (level: number | null) => void;
+  selectedCategory: string | null;
+  setSelectedCategory: (category: string | null) => void;
+  selectedSubCategory: string | null;
+  setSelectedSubCategory: (subCategory: string | null) => void;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+}
 
 const useAsvsData = (): UseAsvsDataResult => {
   const [data, setData] = useState<Category[]>([]);
@@ -47,9 +59,10 @@ const useAsvsData = (): UseAsvsDataResult => {
           subCategory.sub_category_id !== selectedSubCategory
         )
           return false;
+
         return subCategory.requirements.some((requirement) => {
-          if (selectedLevel !== null && !requirement[`level${selectedLevel}`])
-            return false;
+          const levelKey = `level${selectedLevel}` as keyof Requirement;
+          if (selectedLevel !== null && !requirement[levelKey]) return false;
           if (
             searchQuery &&
             !requirement.requirement_id.includes(searchQuery) &&

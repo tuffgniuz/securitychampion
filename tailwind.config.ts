@@ -8,10 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-    screens: {
-      "4xl": "2500px"
-    },
-    colors: {
+      screens: {
+        "4xl": "2500px",
+      },
+      colors: {
         nord: {
           polarnight: {
             25: "#262b35",
@@ -36,14 +36,12 @@ const config: Config = {
             orange: "#d08770",
             yellow: "#ebcb8b",
             green: "#a3be8c",
-            magenta: "#b48ead",
+            purple: "#b48ead",
           },
         },
       },
     },
   },
-  plugins: [
-        require('@tailwindcss/typography'),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
 export default config;

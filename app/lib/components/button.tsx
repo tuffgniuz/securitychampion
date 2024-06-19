@@ -3,14 +3,14 @@ import { FC, ReactNode } from "react";
 interface Props {
   text?: string;
   icon?: ReactNode;
-  size?: "xs" | "sm" | "md" | "lg" | "xl"
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   active?: boolean;
   onClick?: () => void;
 }
 
 const Button: FC<Props> = ({ text, icon, onClick, active, size = "xs" }) => {
   return (
-    <button 
+    <button
       onClick={onClick}
       className={`
         flex 
@@ -22,15 +22,16 @@ const Button: FC<Props> = ({ text, icon, onClick, active, size = "xs" }) => {
         transition-all
         duration-300
         ease-in-out
-        hover:bg-nord-aurora-magenta
+        hover:bg-nord-aurora-purple
         hover:text-nord-polarnight-25
         text-${size}
-        ${active && "bg-nord-aurora-magenta text-nord-polarnight-25"}
-      `}>
+        ${active && "bg-nord-aurora-purple text-nord-polarnight-25"}
+      `}
+    >
       {icon && icon}
       {text && text}
     </button>
-  )
-}
+  );
+};
 
 export default Button;
