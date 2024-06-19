@@ -49,7 +49,7 @@ yarn dev
 ```
 
 ### Related Projects
-- Solomon is heavily inspired by [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool). 
+- [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool). 
 - [OWASP ASVS](https://github.com/OWASP/ASVS) 
 - [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
 
