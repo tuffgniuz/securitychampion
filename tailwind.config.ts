@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  mode: "jit",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -36,7 +37,7 @@ const config: Config = {
             200: "#d08770",
             300: "#ebcb8b",
             400: "#a3be8c",
-            500: "#b48ead",
+            500: "#B48EAD",
           },
         },
       },

@@ -22,10 +22,14 @@ const Button: FC<Props> = ({ text, icon, onClick, active, size = "xs" }) => {
         transition-all
         duration-300
         ease-in-out
-        hover:bg-nord-aurora-500
-        hover:text-nord-polarnight-25
+        outline
+        outline-1
+        outline-nord-polarnight-25
+        hover:outline
+        hover:outline-nord-aurora-500
+        hover:text-nord-aurora-500
         text-${size}
-        ${active && "bg-nord-aurora-500 text-nord-polarnight-25"}
+        ${active ? "outline outline-1 outline-nord-aurora-500 text-nord-aurora-500" : ""}
       `}
     >
       {icon && icon}
