@@ -49,11 +49,11 @@ const MarkdownContent: FC<Props> = ({ requirementId }) => {
       prose-headings:text-lg
       prose-headings:text-nord-frost-50
       prose-h1:text-xl
-      prose-h1:text-nord-aurora-purple
+      prose-h1:text-nord-aurora-500
       prose-blockquote:text-nord-snowstorm-50
       prose-blockquote:border-l-nord-polarnight-200
       prose-blockquote:my-12
-      prose-strong:text-nord-aurora-yellow
+      prose-strong:text-nord-aurora-300
       prose-a:text-nord-frost-200
       prose-hr:border-t-nord-polarnight-300
       prose-code:text-nord-snowstorm-50
