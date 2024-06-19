@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
+
 import { getBookmarkedRequirements } from "../utils/bookmark";
 
 const useBookmarkedRequirements = () => {
-const [bookmarkedRequirements, setBookmarkedRequirements] = useState<Requirement[]>([])
+  const [bookmarkedRequirements, setBookmarkedRequirements] = useState<
+    Requirement[]
+  >([]);
 
   useEffect(() => {
     (async () => {
       const requirements = await getBookmarkedRequirements();
-      setBookmarkedRequirements(requirements)
-    })()
-  }, [])
+      setBookmarkedRequirements(requirements);
+    })();
+  }, []);
 
-  return { bookmarkedRequirements, setBookmarkedRequirements }
-}
+  return { bookmarkedRequirements, setBookmarkedRequirements };
+};
 
 export default useBookmarkedRequirements;
