@@ -6,7 +6,7 @@
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/tuffgniuz/solomon?style=for-the-badge&labelColor=%23181926&color=%23eed49f)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/tuffgniuz/solomon?style=for-the-badge&labelColor=%23181926&color=%23a6da95)
-![Build and deploy](https://img.shields.io/github/actions/workflow/status/tuffgniuz/solomon/build-and-deploy.yml?branch=master&style=for-the-badge)
+![Build and Deploy](https://img.shields.io/github/actions/workflow/status/tuffgniuz/solomon/build-and-deploy.yml?branch=master&style=for-the-badge&labelColor=23181926&color=B48EAD)
 ![GitHub License](https://img.shields.io/github/license/tuffgniuz/solomon?style=for-the-badge&labelColor=%23181926&color=%238bd5ca)
 
 ASVS Compliance Simplified for Developers
