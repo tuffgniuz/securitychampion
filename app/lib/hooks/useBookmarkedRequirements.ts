@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 import { getBookmarkedRequirements } from "../utils/bookmark";
 
 const useBookmarkedRequirements = () => {
-  const [bookmarkedRequirements, setBookmarkedRequirements] = useState<
-    Requirement[]
-  >([]);
+  const [bookmarkedRequirements, setBookmarkedRequirements] = useState<Requirement[]>([]);
 
   useEffect(() => {
     (async () => {

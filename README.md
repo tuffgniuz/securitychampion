@@ -33,6 +33,20 @@ Solomon is a self-hosted web application designed to simplify the collection and
 - **Bookmarking**: Bookmark specific ASVS requirements for quick access.
 - **Educational Context**: Provides detailed context for each requirement to facilitate better understanding.
 
+### Development
+Clone the project:
+```
+git clone https://github.com/tuffgniuz/solomon.git
+```
+Install dependencies:
+```
+yarn install
+```
+Run development server:
+```
+yarn dev
+```
+
 ## Related Projects
 - Solomon is heavily inspired by [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool). 
 - [OWASP ASVS](https://github.com/OWASP/ASVS) 
