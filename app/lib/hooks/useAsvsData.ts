@@ -14,18 +14,6 @@ interface UseAsvsDataResult {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
 }
-interface UseAsvsDataResult {
-  data: Category[];
-  filteredData: Category[];
-  selectedLevel: number | null;
-  setSelectedLevel: (level: number | null) => void;
-  selectedCategory: string | null;
-  setSelectedCategory: (category: string | null) => void;
-  selectedSubCategory: string | null;
-  setSelectedSubCategory: (subCategory: string | null) => void;
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-}
 
 const useAsvsData = (): UseAsvsDataResult => {
   const [data, setData] = useState<Category[]>([]);

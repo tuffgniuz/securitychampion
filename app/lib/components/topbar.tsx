@@ -3,10 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { LucideBookMarked, LucideGithub, LucideInfo } from "lucide-react";
 
-const Topbar: FC = () => {
+interface Props {
+  width: string;
+}
+
+const Topbar: FC<Props> = ({ width }) => {
   return (
     <div className="h-16 border-b border-nord-polarnight-100 mb-10">
-      <div className="h-full w-4/6 4xl:w-3/6 mx-auto flex items-center justify-between">
+      <div className={`h-full flex items-center justify-between ${width}`}>
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/solomon.svg" alt="Logo" width={30} height={30} />
