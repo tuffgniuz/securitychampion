@@ -4,13 +4,15 @@ import Link from "next/link";
 import { LucideBookMarked, LucideGithub, LucideInfo } from "lucide-react";
 
 interface Props {
-  width: string;
+  width?: string;
 }
 
 const Topbar: FC<Props> = ({ width }) => {
   return (
-    <div className="h-16 border-b border-nord-polarnight-100 mb-10">
-      <div className={`h-full flex items-center justify-between ${width}`}>
+    <div className="h-20 mb-10 min-w-full">
+      <div
+        className={`h-full flex items-center justify-between ${width ? width : "px-10"}`}
+      >
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/solomon.svg" alt="Logo" width={30} height={30} />
@@ -20,38 +22,39 @@ const Topbar: FC<Props> = ({ width }) => {
             ASVS 4.0.3
           </span>
         </div>
-        <div className="flex items-center gap-3">
-          <Link
-            href="/collection"
-            className="
-              border
-              border-nord-aurora-400 
-              text-nord-aurora-400
-              hover:bg-nord-aurora-400
-              hover:text-nord-snowstorm-50
-              transition-all 
-              duration-300
-              ease-in-out
-              px-4 py-1
-              rounded-xl 
-              flex 
-              items-center 
-              gap-2
-          "
-          >
-            <LucideBookMarked size={16} />
-            Collection
-          </Link>
-          <Link href="/about" className="bg-nord-frost-300 rounded-full p-2">
-            <LucideInfo size={16} />
-          </Link>
-          <Link
-            href="https://github.com/tuffgniuz/solomon"
-            className="bg-nord-polarnight-25 rounded-full p-2"
-          >
-            <LucideGithub size={16} />
-          </Link>
-        </div>
+        <nav className="flex items-center gap-5">
+          <ul className="flex items-center gap-5 border-r border-nord-snowstorm-100 border-opacity-50 pr-5">
+            <li>
+              <Link
+                className="hover:text-nord-aurora-500 transition-colors duration-300 ease-in-out"
+                href="/requirements"
+              >
+                Requirements
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="hover:text-nord-aurora-500 transition-colors duration-300 ease-in-out flex items-center gap-2 "
+                href="/collection"
+              >
+                Collection
+                <span className="bg-nord-snowstorm-50 text-nord-polarnight-50 rounded-full inline-flex px-2">
+                  0
+                </span>
+              </Link>
+            </li>
+          </ul>
+          <ul className="flex items-center gap-8">
+            <li>
+              <Link
+                href="https://github.com/tuffgniuz/solomon"
+                className="inline-flex bg-nord-polarnight-25 rounded-full p-2"
+              >
+                <LucideGithub size={16} />
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );
