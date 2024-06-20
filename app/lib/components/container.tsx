@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FC, ReactNode } from "react";
 import { usePathname } from "next/navigation";
@@ -13,25 +13,26 @@ interface Props {
 
 const Container: FC<Props> = ({ children }) => {
   const pathname = usePathname();
+  const containerWidth = "w-5/6 2xl:w-3/5 4xl:w-2/6 mx-auto";
 
   return (
     <>
-      <Topbar />
+      <Topbar width={containerWidth} />
       <AnimatePresence mode="wait">
-        <motion.div 
+        <motion.div
           key={pathname}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.5 }}
-          className="min-h-screen w-4/6 4xl:w-3/6 mx-auto"
-        > 
+          className={`min-h-screen ${containerWidth}`}
+        >
           {children}
         </motion.div>
-        </AnimatePresence>
+      </AnimatePresence>
       <Footer />
     </>
-  )
-}
+  );
+};
 
 export default Container;

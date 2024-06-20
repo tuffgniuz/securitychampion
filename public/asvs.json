@@ -471,7 +471,7 @@
     {
         "category_id": "V2",
         "category_name": "Authentication",
-        "summary": "Authentication is foundational to securing applications. It emphasizes the importance of establishing or confirming the authenticity of users and their claims, thereby protecting against impersonation and unauthorized access. It outlines a modern, evidence-based approach to authentication that has evolved significantly from the traditional reliance on usernames and passwords. With the increase in password breaches, this category highlights the shift towards multi-factor authentication (MFA) and the use of stronger, more reliable methods to verify user identity. This approach not only addresses the challenges posed by compromised credentials but also aligns with best practices recommended by standards like NIST 800-63. By adhering to these guidelines and requirements, applications can significantly enhance their security posture, ensuring that access is granted only to authenticated and authorized users.",
+        "summary": "Authentication is foundational to securing applications. It emphasizes establishing or confirming the authenticity of users and their claims, protecting against impersonation and unauthorized access. This category outlines a modern approach to authentication, highlighting the importance of multi-factor authentication (MFA) and stronger verification methods to enhance security and mitigate risks associated with compromised credentials.",
         "sub_categories": [
             {
                 "sub_category_id": "V2.1",

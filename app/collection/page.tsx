@@ -10,7 +10,7 @@ import Container from "../lib/components/container";
 
 const RequirementsMasonry = dynamic(
   () => import("../lib/components/requirements-masonry"),
-  { ssr: false }
+  { ssr: false },
 );
 
 const CollectionPage: NextPage = () => {
@@ -53,13 +53,15 @@ const CollectionPage: NextPage = () => {
             {bookmarkedRequirements.length}
           </span>
         </h1>
-        <button
-          className="flex items-center gap-2 bg-nord-polarnight-25 px-4 py-1 rounded-lg"
-          onClick={handleExportToMarkdown}
-        >
-          <LucideArrowRightFromLine size={14} />
-          Export to markdown
-        </button>
+        <div>
+          <button
+            className="flex items-center gap-2 bg-nord-polarnight-25 px-4 py-1 rounded-lg"
+            onClick={handleExportToMarkdown}
+          >
+            <LucideArrowRightFromLine size={14} />
+            Export to markdown
+          </button>
+        </div>
       </div>
       <RequirementsMasonry
         requirements={bookmarkedRequirements}
