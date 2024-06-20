@@ -9,15 +9,16 @@ import Footer from "./footer";
 
 interface Props {
   children: ReactNode;
+  width?: string;
 }
 
-const Container: FC<Props> = ({ children }) => {
+const Container: FC<Props> = ({ children, width }) => {
   const pathname = usePathname();
   const containerWidth = "w-5/6 2xl:w-3/5 4xl:w-2/6 mx-auto";
 
   return (
     <>
-      <Topbar width={containerWidth} />
+      <Topbar />
       <AnimatePresence mode="wait">
         <motion.div
           key={pathname}
@@ -25,7 +26,7 @@ const Container: FC<Props> = ({ children }) => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.5 }}
-          className={`min-h-screen ${containerWidth}`}
+          className={`min-h-screen ${width ? width : containerWidth}`}
         >
           {children}
         </motion.div>
