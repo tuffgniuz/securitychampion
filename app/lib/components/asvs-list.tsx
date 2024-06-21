@@ -10,10 +10,6 @@ import SubCategories from "./sub-categories";
 import RequirementsTable from "./requirements-table";
 import FloatingButton from "./floating-button";
 
-// interface Props {
-//   items: Category[];
-// }
-
 const AsvsList: FC = () => {
   const {
     data,
@@ -36,19 +32,21 @@ const AsvsList: FC = () => {
       />
 
       {/* Level filter buttons */}
-      <div className="flex items-center gap-2 mb-5">
-        {[1, 2, 3].map((level) => (
-          <Button
-            key={level}
-            icon={<LucideShieldCheck size={12} />}
-            text={`Level ${level}`}
-            size="md"
-            active={selectedLevel === level}
-            onClick={() =>
-              setSelectedLevel(selectedLevel === level ? null : level)
-            }
-          />
-        ))}
+      <div>
+        <div className="flex items-center gap-2 mb-5">
+          {[1, 2, 3].map((level) => (
+            <Button
+              key={level}
+              icon={<LucideShieldCheck size={12} />}
+              text={`Level ${level}`}
+              size="md"
+              active={selectedLevel === level}
+              onClick={() =>
+                setSelectedLevel(selectedLevel === level ? null : level)
+              }
+            />
+          ))}
+        </div>
       </div>
 
       {/* Category filter buttons */}
@@ -56,7 +54,7 @@ const AsvsList: FC = () => {
         {data.map((c) => (
           <Button
             key={c.category_id}
-            icon={<span className="font-thin">{c.category_id}</span>}
+            icon={<span className="text-xs font-thin">{c.category_id}</span>}
             text={c.category_name}
             size="md"
             active={selectedCategory === c.category_id}
@@ -71,7 +69,6 @@ const AsvsList: FC = () => {
       </div>
 
       {/* hide the category name, summary and sub categories component with performing the search */}
-
       {/* Render filtered data */}
       {filteredData.map((c) => (
         <div key={c.category_id} className="mb-10">

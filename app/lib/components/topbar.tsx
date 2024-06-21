@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { LucideBookMarked, LucideGithub, LucideInfo } from "lucide-react";
+import { LucideGithub } from "lucide-react";
 
 interface Props {
   width?: string;
@@ -9,7 +9,7 @@ interface Props {
 
 const Topbar: FC<Props> = ({ width }) => {
   return (
-    <div className="h-20 mb-10 min-w-full">
+    <div className="h-20 mb-10 min-w-full font-semibold">
       <div
         className={`h-full flex items-center justify-between ${width ? width : "px-10"}`}
       >
@@ -32,6 +32,12 @@ const Topbar: FC<Props> = ({ width }) => {
                 Requirements
               </Link>
             </li>
+            <Link
+              href=""
+              className="hover:text-nord-aurora-500 transition-colors duration-300 ease-in-out"
+            >
+              Code Examples
+            </Link>
             <li>
               <Link
                 className="hover:text-nord-aurora-500 transition-colors duration-300 ease-in-out flex items-center gap-2 "

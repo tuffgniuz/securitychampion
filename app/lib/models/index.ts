@@ -8,6 +8,7 @@ interface Category {
 interface SubCategory {
   sub_category_id: string;
   sub_category_name: string;
+  summary?: string;
   requirements: Requirement[];
 }
 

@@ -2,7 +2,7 @@
     {
         "category_id": "V1",
         "category_name": "Architecture, Design and Threat Modeling",
-        "summary":  "Architecture Design and Threat Modeling, aims to instill robust security architecture principles within the application development process, ensuring that security considerations are integrated from the ground up. The chapter underscores the criticality of adopting agile security principles, emphasizing the longevity and adaptability of security architecture as fundamental to the development lifecycle. It sets forth requirements and controls, such as secure software development lifecycle adherence, threat modeling, and documentation of trust boundaries, to guide the design, development, and testing of secure applications. By focusing on these security controls, the chapter seeks to achieve its objective of embedding security into the architectural fabric of applications, thus laying a solid foundation for developing applications that are secure by design.",
+        "summary":  "Architecture, Design and Threat Modeling ensures secure application architecture through threat modeling, secure design principles, and risk management.",
         "sub_categories": [
             {
                 "sub_category_id": "V1.1",
@@ -20,7 +20,7 @@
                     },
                     {
                         "requirement_id": "V1.1.2",
-                        "description": "Verify the use of threat modeling for every design change or sprint planning to identify threats, plan for countermeasures, facilitate appropriate risk responses, and guide security testing.",
+                        "description": "Architecture, Design and Threat Modeling ensures secure application architecture through threat modeling, secure design principles, and risk management.",
                         "level1": false,
                         "level2": true,
                         "level3": true,
@@ -471,11 +471,12 @@
     {
         "category_id": "V2",
         "category_name": "Authentication",
-        "summary": "Authentication is foundational to securing applications. It emphasizes establishing or confirming the authenticity of users and their claims, protecting against impersonation and unauthorized access. This category outlines a modern approach to authentication, highlighting the importance of multi-factor authentication (MFA) and stronger verification methods to enhance security and mitigate risks associated with compromised credentials.",
+        "summary": "Authentication verification validates that authentication mechanisms are implemented securely to prevent unauthorized access.",
         "sub_categories": [
             {
                 "sub_category_id": "V2.1",
                 "sub_category_name": "Password Security",
+                "summary": "Validate that user passwords are strong, managed securely, and protected against common threats like brute force attacks and breached password reuse.",
                 "requirements": [
                     {
                         "requirement_id": "V2.1.1",
@@ -485,7 +486,7 @@
                         "level2": true,
                         "level3": true,
                         "cwe": 521.0,
-                        "nist": "5.1.1.2",
+                        "Authentication Verification validates that authentication mechanisms are implemented securely to prevent unauthorized access.": "5.1.1.2",
                         "link": "https://owasp.org/www-project-proactive-controls/#div-numbering"
                     },
                     {
@@ -603,6 +604,7 @@
             {
                 "sub_category_id": "V2.2",
                 "sub_category_name": "General Authenticator Security",
+                "summary": "Validate that all types of authenticators (e.g., passwords, tokens) are implemented securely and resistant to attacks such as credential stuffing, phishing, and replay attacks.",
                 "requirements": [
                     {
                         "requirement_id": "V2.2.1",
@@ -679,6 +681,7 @@
             {
                 "sub_category_id": "V2.3",
                 "sub_category_name": "Authenticator Lifecycle",
+                "summary": "Validate the secure management of authenticator lifecycle events, including issuance, replacement, revocation, and recovery processes.",
                 "requirements": [
                     {
                         "requirement_id": "V2.3.1",
@@ -715,7 +718,7 @@
             {
                 "sub_category_id": "V2.4",
                 "sub_category_name": "Credential Storage",
-                "summary": "Secure credential storage is crucial for protecting user data in web applications. It involves using strong hashing algorithms and salts to ensure passwords are securely hashed, focusing on safeguarding credentials both at rest and in transit. This practice is vital for preventing unauthorized access and enhancing the overall security posture of digital platforms, ensuring the confidentiality and integrity of user information against potential breaches.",
+                "summary": "Validate that credentials are stored securely, using appropriate cryptographic measures to protect against offline attacks and unauthorized access.",
                 "requirements": [
                     {
                         "requirement_id": "V2.4.1",
@@ -772,6 +775,7 @@
             {
                 "sub_category_id": "V2.5",
                 "sub_category_name": "Credential Recovery",
+                "summary": "Validate that credential recovery mechanisms are secure and do not introduce vulnerabilities such as weak secret questions or insecure delivery methods for recovery tokens.",
                 "requirements": [
                     {
                         "requirement_id": "V2.5.1",
@@ -848,6 +852,7 @@
             {
                 "sub_category_id": "V2.6",
                 "sub_category_name": "Look-up Secret Verifier",
+                "summary": "Validate that look-up secrets (e.g., backup codes) are securely generated, stored, and used only once to prevent reuse attacks.",
                 "requirements": [
                     {
                         "requirement_id": "V2.6.1",
@@ -887,6 +892,7 @@
             {
                 "sub_category_id": "V2.7",
                 "sub_category_name": "Out of Band Verifier",
+                "summary": "Validate the security of out-of-band authentication methods, ensuring they use secure channels and are resistant to interception and replay attacks.",
                 "requirements": [
                     {
                         "requirement_id": "V2.7.1",
@@ -959,6 +965,7 @@
             {
                 "sub_category_id": "V2.8",
                 "sub_category_name": "One Time Verifier",
+                "summary": "Validate that one-time passwords (OTPs) are securely generated, delivered, and used within a limited time frame to prevent unauthorized access.",
                 "requirements": [
                     {
                         "requirement_id": "V2.8.1",
@@ -1042,6 +1049,7 @@
             {
                 "sub_category_id": "V2.9",
                 "sub_category_name": "Cryptographic Verifier",
+                "summary": "Validate that cryptographic keys used in authentication are securely managed and protected against disclosure or misuse.",
                 "requirements": [
                     {
                         "requirement_id": "V2.9.1",
@@ -1081,6 +1089,7 @@
             {
                 "sub_category_id": "V2.10",
                 "sub_category_name": "Service Authentication",
+                "summary": "Validate that authentication between services (e.g., microservices) is secure, avoiding the use of static credentials and ensuring mutual authentication.",
                 "requirements": [
                     {
                         "requirement_id": "V2.10.1",
@@ -1133,7 +1142,7 @@
     {
         "category_id": "V3",
         "category_name": "Session Management",
-        "summary": "Session Management focuses on the mechanisms through which web applications and stateful APIs manage and maintain state for users or devices across multiple requests. The primary goal is to ensure that sessions are unique, non-guessable, secure against common threats, and are invalidated upon user logout or after periods of inactivity to prevent unauthorized access. This category outlines specific requirements that applications must meet to ensure robust session management, including generating new session tokens upon authentication, ensuring session tokens have sufficient entropy, storing session tokens securely, and properly managing session lifecycles. By complying with these detailed guidelines, applications can safeguard against session hijacking, fixation, and other session-based attacks, thereby bolstering overall application security.",
+        "summary": "Session Management Verification focuses on maintaining secure session handling to protect user sessions from hijacking and misuse.",
         "sub_categories": [
             {
                 "sub_category_id": "V3.1",
@@ -1382,7 +1391,7 @@
     {
         "category_id": "V4",
         "category_name": "Access Control",
-        "summary": "Access Control is integral to securing web applications by ensuring that users are only able to access resources and perform actions that are within their permissions. The category establishes a framework for implementing robust access control mechanisms that effectively segregate user privileges and protect against unauthorized access. It emphasizes the importance of designing access controls that are both comprehensive and granular, enabling precise control over resources. Key requirements include ensuring that access controls are enforced consistently across the application, employing principle of least privilege, and securing management interfaces and APIs against unauthorized access. This proactive approach to defining and enforcing access control policies is critical for maintaining the integrity and confidentiality of application data, preventing privilege escalation, and ensuring that users can only interact with the application in ways that are explicitly permitted.",
+        "summary": "Access Control Verification ensures that access controls are properly enforced to prevent unauthorized access to data and functionality.",
         "sub_categories": [
             {
                 "sub_category_id": "V4.1",
@@ -1497,7 +1506,7 @@
     {
         "category_id": "V5",
         "category_name": "Validation, Sanitization and Encoding",
-        "summary": "Validation, Sanitization, and Encoding focus on ensuring that all input received by an application is properly validated as fitting the expected format, sanitized to remove or encode any unwanted characters or patterns, and encoded correctly to prevent unintended execution in the context of a response. This category outlines specific requirements for handling user input and output securely, including detailed guidelines for validating input, sanitizing and sandboxing incoming data, encoding output to prevent injection attacks, and handling untrusted data in memory and during deserialization processes. By adhering to these principles, applications can defend against common vulnerabilities like SQL injection, Cross-Site Scripting (XSS), and other injection flaws, ensuring that data is treated securely throughout the application lifecycle. This systematic approach to input and output handling significantly enhances an application's resilience against manipulation and attacks aimed at exploiting unvalidated or unsanitized data.",
+        "summary": "Validation, Sanitization and Encoding Verification ensures that all input and output are properly validated, sanitized, and encoded to prevent injection attacks.",
         "sub_categories": [
             {
                 "sub_category_id": "V5.1",
@@ -1834,7 +1843,7 @@
     {
         "category_id": "V6",
         "category_name": "Stored Cryptography",
-        "summary": "Stored Cryptography focuses on the protection of data at rest, ensuring that sensitive information stored by an application is adequately protected against unauthorized access through the use of strong encryption practices. This category sets forth requirements for data classification, the selection and implementation of cryptographic algorithms, the management of cryptographic keys, and the generation of random values. By complying with these guidelines, applications ensure that sensitive data, such as personal information, financial details, or confidential business data, is encrypted using robust, up-to-date cryptographic standards, thereby securing it from potential breaches or unauthorized disclosure. Furthermore, the emphasis on effective key management and the use of secure random number generators underpins the overall integrity and confidentiality of the stored data, making Stored Cryptography a critical component of an application's data protection strategy.",
+        "summary": "Stored Cryptography Verification ensures that cryptographic mechanisms for data storage are implemented securely to protect data at rest.",
         "sub_categories": [
             {
                 "sub_category_id": "V6.1",
@@ -2025,7 +2034,7 @@
     {
         "category_id": "V7",
         "category_name": "Error Handling and Logging",
-        "summary": "Error Handling and Logging aim to ensure that applications handle errors and log events in a secure, informative, and non-revealing manner. This category details requirements for logging content that is useful for detecting and understanding security events without exposing sensitive information or system details that could aid attackers. It covers the generation, handling, and protection of logs to prevent unauthorized access or manipulation, as well as the implementation of effective error handling that avoids disclosing technical details, such as stack traces, that could be leveraged in an attack. By following these guidelines, applications can maintain a balance between transparency for security monitoring and analysis, and opacity for potential attackers, thereby enhancing the security posture while aiding in the timely detection and response to incidents.",
+        "summary": "Error Handling and Logging Verification ensures that error handling and logging mechanisms do not expose sensitive information and are securely managed.",
         "sub_categories": [
             {
                 "sub_category_id": "V7.1",
@@ -2176,7 +2185,7 @@
     {
         "category_id": "V8",
         "category_name": "Data Protection",
-        "summary": "Data Protection focuses on safeguarding sensitive information from unauthorized access, disclosure, alteration, and destruction, both in transit and at rest. This category delineates requirements for the general protection of data, ensuring client-side data protection, and managing sensitive private data effectively. By adhering to these principles, applications can implement robust encryption, enforce strict access controls, and apply appropriate data handling policies that align with legal, regulatory, and business data protection standards. This ensures that sensitive data, such as personal identifiable information (PII), financial details, and proprietary information, is adequately protected against threats, thereby preserving confidentiality, integrity, and availability. Through comprehensive data protection strategies, applications not only secure sensitive data against unauthorized access and breaches but also build trust with users by demonstrating a commitment to privacy and security.",
+        "summary": "Data Protection Verification ensures that data protection mechanisms are implemented to protect data in transit and at rest from unauthorized access.",
         "sub_categories": [
             {
                 "sub_category_id": "V8.1",
@@ -2470,7 +2479,7 @@
     {
         "category_id": "V10",
         "category_name": "Malicious Code",
-        "summary": "Malicious Code focuses on protecting applications from the introduction and execution of malicious code that could compromise the security or functionality of the application. This category outlines requirements for maintaining code integrity, detecting and preventing the inclusion of malicious code, and ensuring application integrity throughout its lifecycle. By implementing controls such as code signing, scanning for known vulnerabilities, and monitoring for unexpected behavior, applications can defend against threats such as malware, tampering, and zero-day exploits. These measures are critical for ensuring that the application remains secure, trustworthy, and resilient against attacks designed to manipulate, disrupt, or take control of the application's operations. By prioritizing code integrity and vigilance against malicious threats, organizations can safeguard their applications and the data they process from potential compromises.",
+        "summary": "Malicious Code Verification ensures that the application is protected against malicious code and code injection attacks.",
         "sub_categories": [
             {
                 "sub_category_id": "V10.1",
@@ -2595,7 +2604,7 @@
     {
         "category_id": "V11",
         "category_name": "Business Logic",
-        "summary": "Business Logic focuses on securing applications against attacks that exploit the unique processes, functions, and flows of the application's business logic. This category emphasizes the identification, documentation, and protection of critical business logic paths to prevent abuse and ensure that the application behaves as intended under all circumstances. By understanding and securing the business logic, applications can defend against complex attacks that traditional security controls may not detect, such as unauthorized access to functionality, manipulation of data flows, or bypassing of process steps. These requirements advocate for a thorough security analysis of business logic flows, ensuring that they are designed and implemented with security in mind, thereby mitigating risks that could lead to fraud, data breaches, or operational disruptions. Protecting the business logic is essential for maintaining the integrity, confidentiality, and availability of the application's core functions and sensitive data.",
+        "summary": "Business Logic Verification ensures that the application's business logic is secure and cannot be bypassed or manipulated by attackers.",
         "sub_categories": [
             {
                 "sub_category_id": "V11.1",
@@ -2688,7 +2697,7 @@
     {
         "category_id": "V12",
         "category_name": "Files and Resources",
-        "summary": "Files and Resources focuses on ensuring the secure handling of files and resources accessed by or uploaded to the application. This category sets forth requirements for securely managing file uploads, ensuring the integrity of files, preventing unauthorized file execution, securely storing files, and safely facilitating file downloads. By adhering to these guidelines, applications can mitigate risks associated with handling external files, such as malware uploads, unauthorized access or modification of files, and exposure of sensitive information. The emphasis on validating file types, implementing secure storage solutions, and enforcing access controls plays a crucial role in protecting the application from various file-related attacks, including directory traversal, file inclusion vulnerabilities, and resource exhaustion threats. Secure management of files and resources is critical for maintaining the application's integrity and safeguarding user data.",
+        "summary": "Files and Resources Verification ensures secure handling of files and resources to prevent unauthorized access and execution.",
         "sub_categories": [
             {
                 "sub_category_id": "V12.1",
@@ -2881,7 +2890,7 @@
     {
         "category_id": "V13",
         "category_name": "API and Web Service",
-        "summary": "API and Web Service security is focused on ensuring the secure design, implementation, and interaction with APIs and web services that applications expose or consume. This category encompasses a range of requirements tailored to secure various types of web services, including generic web services, RESTful services, SOAP services, and GraphQL interfaces. By applying these security measures, applications can safeguard against unauthorized access, data breaches, and various attack vectors specific to web services, such as injection attacks, insecure direct object references, and misconfigured security controls. These requirements emphasize the importance of applying consistent authentication, authorization, input validation, and data encoding strategies across all types of web services, thereby protecting the data exchanged and processed through these APIs from exploitation and ensuring that the services remain resilient against attacks. Secure API and web service practices are crucial for maintaining the integrity and confidentiality of data as it moves between systems and applications in a distributed network environment.",
+        "summary": "API and Web Service Verification ensures the secure design and implementation of APIs and web services to prevent unauthorized access and data breaches.",
         "sub_categories": [
             {
                 "sub_category_id": "V13.1",
@@ -3042,7 +3051,7 @@
     {
         "category_id": "V14",
         "category_name": "Configuration",
-        "summary": "Configuration management is critical in securing the application’s setup and deployment environment. Chapter 14 emphasizes the importance of secure build and deployment practices, management of dependencies, prevention of unintended security disclosures, and the implementation of security-focused HTTP headers. By adhering to these guidelines, applications can avoid common pitfalls that lead to vulnerabilities, such as using outdated libraries, exposing sensitive information through misconfigurations, or failing to leverage security features of the web platform. Secure configuration ensures that the application is deployed with the most robust settings against attacks, reducing the surface area for exploitation and reinforcing the application’s defense mechanisms. This approach is fundamental in establishing a secure foundation for the application’s operation and interaction with users, preventing configuration errors that could lead to severe security breaches.",
+        "summary": "Configuration Verification ensures that application and server configurations are securely managed to prevent misconfigurations and vulnerabilities.",
         "sub_categories": [
             {
                 "sub_category_id": "V14.1",
