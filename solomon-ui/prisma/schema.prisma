@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id            String        @id @default(uuid())
+  categoryId    String
+  name          String
+  summary       String
+  subCategories SubCategory[]
+}
+
+model SubCategory {
+  id            String        @id @default(uuid())
+  subCategoryId String
+  name          String
+  summary       String?
+  categoryId    String?
+  category      Category?     @relation(fields: [categoryId], references: [id])
+  requirements  Requirement[]
+}
+
+model Requirement {
+  id            String       @id @default(uuid())
+  requirementId String
+  description   String
+  level1        Boolean
+  level2        Boolean
+  level3        Boolean
+  cwe           String
+  subCategoryId String?
+  subCategory   SubCategory? @relation(fields: [subCategoryId], references: [id])
+}

@@ -13,6 +13,7 @@ ASVS Compliance Simplified for Developers
 
 💡 [Summary](#summary)
 🚀 [Related Projects](#related-projects)
+Live Demo
 
 </div>
 
@@ -32,7 +33,10 @@ Solomon is a self-hosted web application designed to simplify the collection and
 #### Key Features
 - **Search and Filter**: Easily search and filter ASVS requirements based on security level, category, or subcategory.
 - **Bookmarking**: Bookmark specific ASVS requirements for quick access.
-- **Educational Context**: Provides detailed context for each requirement to facilitate better understanding.
+- **Educational Context**: Provides summaries each requirement to facilitate better understanding.
+
+### Live Demo
+Solomon is still in development but you find a live demo hosted on vercel [here](https://solomon-lac.vercel.app/).
 
 ### Development
 Clone the project:
@@ -49,12 +53,12 @@ yarn dev
 ```
 
 ### Related Projects
-- [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool). 
+The following projects have inspired me and are made it possible to build solomon:
+
+- [Security Knowledge Framework's Requirements Tool](https://github.com/Security-Knowledge-Framework/SKF-requirements-tool)
 - [OWASP ASVS](https://github.com/OWASP/ASVS) 
 - [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
 
 ### License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
-
-
