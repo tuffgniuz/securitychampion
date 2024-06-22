@@ -36,7 +36,7 @@ Solomon is a self-hosted web application designed to simplify the collection and
 - **Educational Context**: Provides summaries each requirement to facilitate better understanding.
 
 ### Live Demo
-Solomon is still in development but you find a live demo hosted on vercel [here](https://solomon-lac.vercel.app/).
+Solomon is still in development but you can find a live demo hosted on vercel [here](https://solomon-lac.vercel.app/).
 
 ### Development
 Clone the project:
