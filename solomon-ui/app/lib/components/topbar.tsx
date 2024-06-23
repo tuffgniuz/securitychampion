@@ -9,7 +9,7 @@ interface Props {
 
 const Topbar: FC<Props> = ({ width }) => {
   return (
-    <div className="h-20 mb-10 min-w-full font-semibold">
+    <div className="h-16 mb-10 min-w-full">
       <div
         className={`h-full flex items-center justify-between ${width ? width : "px-10"}`}
       >
@@ -36,7 +36,7 @@ const Topbar: FC<Props> = ({ width }) => {
               href=""
               className="hover:text-nord-aurora-500 transition-colors duration-300 ease-in-out"
             >
-              Code Examples
+              Wiki
             </Link>
             <li>
               <Link

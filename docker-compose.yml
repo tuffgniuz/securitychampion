@@ -2,10 +2,29 @@ services:
   solomon-db:
     container_name: solomon-db
     build:
-      context: . # root of project
+      context: .
       dockerfile: docker/postgres/Dockerfile
     env_file:
       - ./solomon-ui/.env
     ports:
       - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  # solomon-ui:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/nodejs/Dockerfile
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./solomon-ui:/app:cached,delegated
+  #     - /app/node_modules
+  #   env_file:
+  #     - ./solomon-ui/.env
+  #   depends_on:
+  #     - solomon-db
+
+volumes:
+  postgres-data:
 

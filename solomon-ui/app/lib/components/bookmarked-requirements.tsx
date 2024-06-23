@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { FC } from "react";
 import dynamic from "next/dynamic";
@@ -32,7 +32,16 @@ const BookmarkedRequirements: FC<Props> = ({ requirements }) => {
       <div className="flex items-center justify-between mb-10">
         <h1 className="text-lg font-semibold flex items-center gap-2">
           Bookmarked Requirements
-          <span className="inline-flex text-xs bg-nord-snowstorm-50 text-nord-polarnight-25 rounded-full px-2 py-1">
+          <span
+            className="
+              inline-flex 
+              text-xs 
+              bg-nord-snowstorm-50 
+              text-nord-polarnight-25 
+              rounded-full 
+              px-2 py-1
+            "
+          >
             {bookmarkedRequirements.length}
           </span>
         </h1>
