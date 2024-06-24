@@ -1,14 +1,14 @@
 export interface Category {
   id: string;
-  categoryId: string;
+  category_key: string;
   name: string;
   summary: string;
-  subCategories: SubCategory[];
+  sub_categories: SubCategory[];
 }
 
 export interface SubCategory {
   id: string;
-  subCategoryId: string;
+  sub_category_id: string;
   name: string;
   summary?: string | null;
   requirements: Requirement[];
@@ -16,7 +16,7 @@ export interface SubCategory {
 
 export interface Requirement {
   id: string;
-  requirementId: string;
+  requirement_key: string;
   description: string;
   level1?: boolean;
   level2?: boolean;

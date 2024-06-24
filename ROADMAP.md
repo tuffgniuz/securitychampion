@@ -12,6 +12,8 @@
 ## Add Database
 
 - [x] Setup and configure a postgres database inside a docker container
+- [x] The postgres container should handle creating the schemas independently
+- [ ] A separate container to handle seeding the data from `asvs.json` into the postgres database 
 - [ ] Continous deployment to a production server for live version of solomon 
 
 ## UI General
